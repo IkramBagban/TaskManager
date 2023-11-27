@@ -1,56 +1,44 @@
-import React,{useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import UserContext from "../store/user-context";
 
 function Login() {
-  const [input, setInput]=useState({
-    email : '',
-    password : '',
-  })
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
 
-  const userCtx = useContext(UserContext)
-  const loginHandler =()=>{
-    console.log(input)
-    userCtx.onLogin(input)
-  }
+  const userCtx = useContext(UserContext);
 
-  const emailChangeHandler = (e)=>{
-    setInput({
-      email: e.target.value,
-      password:input.password
-    })
-  }
-  const passwordChangeHandler = (e)=>{
-    setInput({
-      email:input.email,
-      password: e.target.value,
-    })
-  }
+  const loginHandler = () => userCtx.onLogin(input);
 
-  // const onChangeHandler = (e,mode)=>{
-  //   console.log("on change")
-  //   if(mode === 'email'){
-  //     setInput({
-  //       email:input.email,
-  //       password: e.target.value,
-  //     })
-  //   }else{
-  //     setInput({
-  //       email:input.email,
-  //       password: e.target.value,
-  //     })
-  //   }
-  // }
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
 
-  
+    setInput((prevState) => ({ ...prevState, [name]: value }));
+  };
+
   return (
     <div>
       <div>
-        <label htmlFor="email" >email : </label>
-        <input type="text"  onChange={emailChangeHandler} id="email"/>
+        <label htmlFor="email">email : </label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          value={input.email}
+          onChange={inputChangeHandler}
+        />
       </div>
+
       <div>
         <label htmlFor="password">password : </label>
-        <input type="text" id="password" onChange={passwordChangeHandler} />
+        <input
+          type="text"
+          name="password"
+          id="password"
+          value={input.password}
+          onChange={inputChangeHandler}
+        />
       </div>
 
       <button onClick={loginHandler}>Login</button>

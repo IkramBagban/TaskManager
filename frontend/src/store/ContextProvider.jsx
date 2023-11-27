@@ -1,32 +1,34 @@
 import UserContext from "./user-context";
 import React, { useEffect, useState } from "react";
 
-const ContextProvider = ({children}) => {
+const ContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem("token") || '');
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-  useEffect (() => {
+  useEffect(() => {
     localStorage.setItem("token", token);
+    console.log("users", users);
+    console.log("token of new id", token)
   }, [token]);
 
-//   const setToken = newToken =>{
-    const setTokenState = newToken => {
-        setToken(newToken);
-      };
+  const updateToken = (newToken) => {
+    setToken(newToken);
+  };
 
-  const login = ({email, password}) => {
+  const login = ({ email, password }) => {
     const existingUser = users.find(
       (user) => user.email === email && password === user.password
     );
+    console.log('existingUser',existingUser)
     if (existingUser) {
-      localStorage.setItem("token", existingUser.token);
-      setToken(existingUser.token)
-    } else {
-      alert("Please Enter Valid Detail");
+      updateToken(existingUser.id);
+      return;
     }
+
+    alert("Please Enter Valid Detail");
   };
 
-  const signup = ({email, password}) => {
+  const signup = ({ email, password }) => {
     const existingUser = users?.find((user) => user.email === email);
     if (existingUser) {
       alert("This Is An Existing Email.");
@@ -37,27 +39,21 @@ const ContextProvider = ({children}) => {
       return;
     }
 
-    const id = users.length < 1 ? 1 : users[users.length-1]?.id + 1;
-    const newUser = { email, password, id};
-    console.log("new user", newUser)
+    const newUser = { email, password, id: users.length + 1 };
     setUsers((prevUsers) => [...prevUsers, newUser]);
-    localStorage.setItem("token", id?.toString() );
-    setToken(id)
-    console.log("New User Created",id.toString() );
+    setToken(newUser?.id);
   };
 
-  const logout= ()=>{
-    localStorage.removeItem("token");
-    setToken("")
-  }
+  const logout = () => setToken("");
+
   const value = {
     users: users,
     onLogin: login,
     onSignup: signup,
     onLogout: logout,
     isAuthenticated: !!token,
-    token : token,
-    setToken:setTokenState
+    token: token,
+    setToken: updateToken,
   };
   return <UserContext.Provider value={value}>{children} </UserContext.Provider>;
 };

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "./store/user-context";
 
 const Home = ({onLogout}) => {
-    const userCtx = useContext(UserContext)
+  // const userCtx = useContext(UserContext)
   return (
     <div>
       <div>

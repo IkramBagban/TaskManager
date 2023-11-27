@@ -3,27 +3,22 @@ import Login from "./Login";
 import Signup from "./Signup";
 
 function Welcome() {
-    const [showLogin, setShowLogin] = useState(false)
-    const [showSingup, setShowSingup] = useState(false)
-  const LoginHandler = () => {
-    setShowLogin(true);
-    setShowSingup(false)
-  };
-  const SingupHandler = () => {
-    setShowLogin(false);
-    setShowSingup(true)
-  };
+  const [activeComponent,setActiveComponent] = useState(null);
+  
+  const toggleComponent = (component) =>{
+    setActiveComponent(component)
+  }
   return (
     <div>
       <h1>Welcome To Task Manager App </h1>
       <div>
-        <button onClick={LoginHandler}>Login</button>
-        <button onClick={SingupHandler}>Singup</button>
+        <button onClick={()=> toggleComponent("login")}>Login</button>
+        <button onClick={()=> toggleComponent("signup")}>Singup</button>
       </div>
 
       <dir>
-        {showLogin && <Login />}
-        {showSingup && <Signup />}
+        {activeComponent === "login" && <Login />}
+        {activeComponent === "signup" && <Signup />}
       </dir>
     </div>
   );
