@@ -8,7 +8,7 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("token", token);
     console.log("users", users);
-    console.log("token of new id", token)
+    console.log("token of new id", token);
   }, [token]);
 
   const updateToken = (newToken) => {
@@ -19,7 +19,8 @@ const ContextProvider = ({ children }) => {
     const existingUser = users.find(
       (user) => user.email === email && password === user.password
     );
-    console.log('existingUser',existingUser)
+
+    console.log("existingUser", existingUser);
     if (existingUser) {
       updateToken(existingUser.id);
       return;
@@ -40,6 +41,13 @@ const ContextProvider = ({ children }) => {
     }
 
     const newUser = { email, password, id: users.length + 1 };
+
+    fetch("http://localhost:3000/users/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
     setUsers((prevUsers) => [...prevUsers, newUser]);
     setToken(newUser?.id);
   };
