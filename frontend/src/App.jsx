@@ -2,16 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import Welcome from "./authentication/Welcome";
 import UserContext from "./store/user-context";
 import Home from "./Home";
+import useFetchData from "./customHooks/useFetchData";
 
 function App() {
   const userCtx = useContext(UserContext);
-  useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      }).catch(err=>console.log(err));
-  }, []);
+  const { users, isError, isLoading } = useFetchData(
+    "http://localhost:3000/users"
+  );
+  
+  useEffect(()=>{
+    if(isError){
+      console.log("Got some error while fetching the data", isError);
+      return;
+    }
+
+    userCtx.onSeveUsers(users)
+  },[users, isError])
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");

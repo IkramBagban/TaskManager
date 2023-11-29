@@ -15,6 +15,14 @@ const ContextProvider = ({ children }) => {
     setToken(newToken);
   };
 
+  const saveUsers = (data) =>{
+    if(!data){
+      console.log("Provide valid data");
+      return;
+    }
+
+    setUsers(data)
+  }
   const login = ({ email, password }) => {
     const existingUser = users.find(
       (user) => user.email === email && password === user.password
@@ -56,6 +64,7 @@ const ContextProvider = ({ children }) => {
 
   const value = {
     users: users,
+    onSeveUsers : saveUsers,
     onLogin: login,
     onSignup: signup,
     onLogout: logout,
