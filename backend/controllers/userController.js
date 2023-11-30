@@ -15,15 +15,17 @@ exports.getUsers = (req, res, next) => {
 
 exports.createUser = (req, res, next) => {
   console.log(req.body);
-  const { email, password } = req.body;
-  //   const users = USERS;
-  //   const user = { id: users.length + 1, email, password };
-  const id = Math.random().toString();
-  const user = new Users(id, email, password);
-  user.save();
+  const { username, phoneNumber, email, password } = req.body;
+  
+  Users.getUsers((users) => {
+    const id = users.length + 1;
 
-  res.json({
-    message: "User Created Successfully",
+    const user = new Users(id, username, phoneNumber, email, password);
+    user.save();
+
+    res.json({
+      message: "User Created Successfully",
+    });
   });
 };
 

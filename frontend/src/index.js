@@ -3,12 +3,30 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import ContextProvider from "./store/ContextProvider";
+import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import Login from "./authentication/Login";
+import Signup from "./authentication/Signup";
+import Welcome from "./authentication/Welcome";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "welcome",
+        element: <Welcome />,
+      },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
+    ],
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ContextProvider>
-      <App />
+      <RouterProvider router={router} />
     </ContextProvider>
   </React.StrictMode>
 );

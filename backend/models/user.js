@@ -14,12 +14,14 @@ const getUsersFromDB = (cb) => {
 };
 
 class Users {
-  constructor(id, email, password) {
+  constructor(id, username, phoneNumber, email, password) {
     this.id = id;
+    this.username = username;
+    this.phoneNumber = phoneNumber
     this.email = email;
     this.password = password;
   }
-
+  
   save() {
     getUsersFromDB((users) => {
       const updatedUsers = [...users, this];

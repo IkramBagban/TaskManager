@@ -3,73 +3,29 @@ import React, { useEffect, useState } from "react";
 
 const ContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
 
   useEffect(() => {
-    localStorage.setItem("token", token);
+
+    
     console.log("users", users);
     console.log("token of new id", token);
   }, [token]);
 
   const updateToken = (newToken) => {
+    console.log("TOKEN SET ", token)
     setToken(newToken);
   };
 
-  const saveUsers = (data) =>{
-    if(!data){
-      console.log("Provide valid data");
-      return;
-    }
-
-    setUsers(data)
-  }
-  const login = ({ email, password }) => {
-    const existingUser = users.find(
-      (user) => user.email === email && password === user.password
-    );
-
-    console.log("existingUser", existingUser);
-    if (existingUser) {
-      updateToken(existingUser.id);
-      return;
-    }
-
-    alert("Please Enter Valid Detail");
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
   };
-
-  const signup = ({ email, password }) => {
-    const existingUser = users?.find((user) => user.email === email);
-    if (existingUser) {
-      alert("This Is An Existing Email.");
-      return;
-    }
-    if (!email || !password) {
-      alert("Both The Field Are Mandatory!");
-      return;
-    }
-
-    const newUser = { email, password, id: users.length + 1 };
-
-    fetch("http://localhost:3000/users/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    setUsers((prevUsers) => [...prevUsers, newUser]);
-    setToken(newUser?.id);
-  };
-
-  const logout = () => setToken("");
 
   const value = {
     users: users,
-    onSeveUsers : saveUsers,
-    onLogin: login,
-    onSignup: signup,
-    onLogout: logout,
-    isAuthenticated: !!token,
     token: token,
+    onLogout: logout,
     setToken: updateToken,
   };
   return <UserContext.Provider value={value}>{children} </UserContext.Provider>;

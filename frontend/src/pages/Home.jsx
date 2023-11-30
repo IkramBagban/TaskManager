@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import UserContext from "./store/user-context";
+import UserContext from "../store/user-context";
 
 const Home = ({onLogout}) => {
   // const userCtx = useContext(UserContext)

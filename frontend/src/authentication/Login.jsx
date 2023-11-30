@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../store/user-context";
+import { getUsers } from "../utils/api";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [input, setInput] = useState({
@@ -9,11 +11,20 @@ function Login() {
 
   const userCtx = useContext(UserContext);
 
-  const loginHandler = () => userCtx.onLogin(input);
+  const loginHandler = async () => {
+    let users = await getUsers();
+    const existing = users?.find((user) => user.email === input.email);
+
+    if (!existing) {
+      console.log("User Not Exist");
+      return;
+    }
+    localStorage.setItem("token", existing.id);
+    userCtx.setToken(existing.id);
+  };
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
-
     setInput((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -42,6 +53,7 @@ function Login() {
       </div>
 
       <button onClick={loginHandler}>Login</button>
+      <Link to="/signup" >Signup</Link>
     </div>
   );
 }
