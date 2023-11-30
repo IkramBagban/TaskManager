@@ -4,9 +4,10 @@ import "./index.css";
 import App from "./App";
 import ContextProvider from "./store/ContextProvider";
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
-import Login from "./authentication/Login";
-import Signup from "./authentication/Signup";
-import Welcome from "./authentication/Welcome";
+import Login from "./pages/authentication/Login";
+import Signup from "./pages/authentication/Signup";
+import Welcome from "./pages/authentication/Welcome";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
+      { path: "home", element: <Home /> },
     ],
   },
 ]);

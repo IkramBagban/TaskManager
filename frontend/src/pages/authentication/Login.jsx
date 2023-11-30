@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../store/user-context";
-import { getUsers } from "../utils/api";
-import { Link } from "react-router-dom";
+import UserContext from "../../store/user-context";
+import { getUsers } from "../../utils/api";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate()
 
   const userCtx = useContext(UserContext);
 
@@ -21,6 +23,7 @@ function Login() {
     }
     localStorage.setItem("token", existing.id);
     userCtx.setToken(existing.id);
+    navigate('/home')
   };
 
   const inputChangeHandler = (e) => {
@@ -30,6 +33,7 @@ function Login() {
 
   return (
     <div>
+      <h1>Login Page</h1>
       <div>
         <label htmlFor="email">email : </label>
         <input
@@ -53,7 +57,8 @@ function Login() {
       </div>
 
       <button onClick={loginHandler}>Login</button>
-      <Link to="/signup" >Signup</Link>
+      <br />
+      <Link to="/signup" style={{textDecoration:"none"}} >Signup</Link>
     </div>
   );
 }

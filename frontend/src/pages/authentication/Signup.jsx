@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { getUsers, postData } from "../utils/api";
-import { Link } from "react-router-dom";
+import { getUsers, postData } from "../../utils/api";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [input, setInput] = useState({
@@ -11,6 +11,7 @@ function Signup() {
     confirmPassword: "",
   });
 
+    const navigate = useNavigate();
   const singupHandler = async () => {
     const users = await getUsers();
     const existing = users?.find((user) => user.email === input.email);
@@ -36,6 +37,7 @@ function Signup() {
         "User created succefully, go on login page and login  ",
         result
       );
+      navigate('/login')
     });
 
     console.log("POST DATA", input);
@@ -49,6 +51,8 @@ function Signup() {
 
   return (
     <div>
+      <h1>Signup Page</h1>
+
       <div>
         <label htmlFor="username">Username : </label>
         <input type="text" id="username" onChange={inputChangeHandler} />
@@ -74,7 +78,10 @@ function Signup() {
         <input type="text" id="confirmPassword" onChange={inputChangeHandler} />
       </div>
       <button onClick={singupHandler}>Singup</button>
-      <Link to="/login">Login</Link>
+      <br />
+      <Link style={{ textDecoration: "none" }} to="/login">
+        Login
+      </Link>
     </div>
   );
 }

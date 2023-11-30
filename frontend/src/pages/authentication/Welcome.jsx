@@ -17,7 +17,8 @@ function Welcome() {
   console.log("welcome page");
   return (
     <div>
-      <h1>Welcome To Task Manager App </h1>
+           <h1>Welcome Page</h1>
+
       <div>
         <button onClick={loginHandler}>Login</button>
         <button onClick={signHandler}>Singup</button>
