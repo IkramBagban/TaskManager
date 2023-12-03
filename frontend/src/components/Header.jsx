@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import TaskForm from "../pages/taskPages/TaskForm";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
           <NavLink to="/home">Home</NavLink>
         </li>
         <li style={{ margin: "0 30px" }}>
-          <NavLink to="/Tasks">Tasks</NavLink>
+          <NavLink to="/tasks">Tasks</NavLink>
         </li>
         <li style={{ margin: "0 30px" }}>
           <NavLink to="/profile">profile</NavLink>
@@ -18,6 +19,8 @@ const Header = () => {
         <NavLink to="/logout">Logout</NavLink>
         </li> */}
       </ul>
+
+      {/* <TaskForm /> */}
     </div>
   );
 };

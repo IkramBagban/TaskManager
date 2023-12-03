@@ -9,7 +9,7 @@ function Login() {
     password: "",
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const userCtx = useContext(UserContext);
 
@@ -18,18 +18,20 @@ function Login() {
     const existingUser = users?.find((user) => user.email === input.email);
 
     if (!existingUser) {
-      console.log("User Not Exist");
+      const error = new Error("User Not Exist");
+      console.error(error);
       return;
     }
 
-    if(existingUser.password !== input.password){
-      const error = new Error("Wrong Password!")
-      console.error(error)
+    if (existingUser.password !== input.password) {
+      const error = new Error("Wrong Password!");
+      console.error(error);
       return;
     }
+
     localStorage.setItem("token", existingUser.id);
     userCtx.setToken(existingUser.id);
-    navigate('/home')
+    navigate("/home");
   };
 
   const inputChangeHandler = (e) => {
@@ -64,9 +66,10 @@ function Login() {
 
       <button onClick={loginHandler}>Login</button>
       <br />
-      
-      
-      <Link to="/signup" style={{textDecoration:"none"}} >Signup</Link>
+
+      <Link to="/signup" style={{ textDecoration: "none" }}>
+        Signup
+      </Link>
     </div>
   );
 }
