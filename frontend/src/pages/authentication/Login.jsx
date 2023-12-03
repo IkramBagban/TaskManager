@@ -15,14 +15,20 @@ function Login() {
 
   const loginHandler = async () => {
     let users = await getUsers();
-    const existing = users?.find((user) => user.email === input.email);
+    const existingUser = users?.find((user) => user.email === input.email);
 
-    if (!existing) {
+    if (!existingUser) {
       console.log("User Not Exist");
       return;
     }
-    localStorage.setItem("token", existing.id);
-    userCtx.setToken(existing.id);
+
+    if(existingUser.password !== input.password){
+      const error = new Error("Wrong Password!")
+      console.error(error)
+      return;
+    }
+    localStorage.setItem("token", existingUser.id);
+    userCtx.setToken(existingUser.id);
     navigate('/home')
   };
 
@@ -58,6 +64,8 @@ function Login() {
 
       <button onClick={loginHandler}>Login</button>
       <br />
+      
+      
       <Link to="/signup" style={{textDecoration:"none"}} >Signup</Link>
     </div>
   );

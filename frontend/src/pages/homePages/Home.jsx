@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import UserContext from "../store/user-context";
+import UserContext from "../../store/user-context";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
 
 const Home = () => {
   const userCtx = useContext(UserContext)
@@ -13,6 +14,7 @@ const Home = () => {
   }
   return (
     <div>
+      
       <div>
         <h1>Home </h1>
         <button onClick={logoutHandler}>Logout</button>

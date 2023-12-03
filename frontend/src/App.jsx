@@ -1,27 +1,25 @@
 import React, { useContext, useEffect } from "react";
-// import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom"
-import Welcome from "./pages/authentication/Welcome";
 import UserContext from "./store/user-context";
-import Home from "./pages/Home";
 import { Outlet, useNavigate } from "react-router-dom";
+import Header from "./components/Header";
 
 function App() {
   const userCtx = useContext(UserContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
 
-    if (storedToken){
+    if (storedToken) {
       userCtx.setToken(storedToken);
-      navigate('/home')
-    }else{
-      navigate('/welcome')
-    }
+      navigate("/home");
+    } else navigate("/welcome");
   }, []);
 
   return (
     <div>
       {/* {userCtx.token ? <Home onLogout={userCtx.onLogout} /> : <Welcome />} */}
+      {userCtx.token && <Header />}
       <Outlet />
     </div>
   );
