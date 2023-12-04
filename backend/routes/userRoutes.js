@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get("/", userController.getUsers)
 
-
 router.post("/create", userController.createUser)
 
 router.get("/user/:id", userController.getUser)
