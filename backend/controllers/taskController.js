@@ -12,5 +12,5 @@ exports.postTask = (req, res, next) => {
 
   const task = new Tasks(null, title, description, dueDate, priority, status);
   task.save();
-  res.status(201).send({message: "Task Added Successfully", task : task})
+  res.status(201).send({message: "Task Added Successfully"})
 };
