@@ -31,7 +31,7 @@ class Tasks {
   save() {
     getTasksFromDB((tasks) => {
       tasks.push(this);
-      fs.writeFile(tasksDBPath, JSON.stringify("tsks"), (err) => {
+      fs.writeFile(tasksDBPath, JSON.stringify(tasks), (err) => {
         if (err) {
           const error = new Error("got an error while updating the file.", err);
           console.error(error);
