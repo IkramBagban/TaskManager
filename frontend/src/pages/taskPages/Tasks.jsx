@@ -52,7 +52,7 @@ const Tasks = () => {
       >
         {tasks.map((task) => {
           return (
-            <Link style={{ width: "100%" }} to={`${task._id}`} key={task.id}>
+            <Link style={{ width: "100%" }} to={`${task._id}`} key={task._id}>
               <Task task={task} />
             </Link>
           );

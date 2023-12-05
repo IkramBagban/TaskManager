@@ -35,6 +35,7 @@ const TaskForm = () => {
 
   const addTaskHandler = () => {
     navigate('/tasks')
+    console.log(inputValues)
     setInputValues({
       title: "",
       description: "",
