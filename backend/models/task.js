@@ -28,6 +28,22 @@ class Tasks {
     this.status = status;
   }
 
+  save(){
+    getTasksFromDB(tasks =>{
+        tasks.push(this);
+        fs.writeFile(tasksDBPath, 'utf-8', err=>{
+            if(err){
+                const error = new Error('got an error while updating the file.', err)
+                console.error(error)
+                throw error
+                // return;
+            }
+
+            console.info('Task Has Been Added.')
+        })
+    })
+  }
+
   static getTasks = (cb) =>{
     getTasksFromDB(tasks =>{
         console.log(tasks);
