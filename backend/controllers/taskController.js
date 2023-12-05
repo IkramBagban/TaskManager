@@ -8,9 +8,9 @@ exports.getTasks = (req, res, next) => {
 };
 
 exports.postTask = (req, res, next) => {
-  const { _id, title, description, dueDate, priority, status } = req.body;
+  const { title, description, dueDate, priority, status } = req.body;
 
-  const task = new Tasks(_id, title, description, dueDate, priority, status);
+  const task = new Tasks(null, title, description, dueDate, priority, status);
   task.save();
   res.status(201).send({message: "Task Added Successfully", task : task})
 };
