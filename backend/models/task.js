@@ -13,7 +13,6 @@ const getTasksFromDB = (cb) => {
     }
 
     data = JSON.parse(data);
-    // console.log(data);
     cb(data);
   });
 };
