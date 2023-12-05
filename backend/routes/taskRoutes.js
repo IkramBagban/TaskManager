@@ -7,5 +7,7 @@ const router = express.Router();
 
 router.get('/', taskController.getTasks);
 
+router.post('/addTask', taskController.postTask)
+
 
 module.exports = router;

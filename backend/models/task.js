@@ -28,29 +28,27 @@ class Tasks {
     this.status = status;
   }
 
-  save(){
-    getTasksFromDB(tasks =>{
-        tasks.push(this);
-        fs.writeFile(tasksDBPath, 'utf-8', err=>{
-            if(err){
-                const error = new Error('got an error while updating the file.', err)
-                console.error(error)
-                throw error
-                // return;
-            }
+  save() {
+    getTasksFromDB((tasks) => {
+      tasks.push(this);
+      fs.writeFile(tasksDBPath, JSON.stringify("tsks"), (err) => {
+        if (err) {
+          const error = new Error("got an error while updating the file.", err);
+          console.error(error);
+          throw error;
+        }
 
-            console.info('Task Has Been Added.')
-        })
-    })
+        console.log("Task Has Been Added.");
+      });
+    });
   }
 
-  static getTasks = (cb) =>{
-    getTasksFromDB(tasks =>{
-        console.log(tasks);
-        cb(tasks)
-    })
-  }
+  static getTasks = (cb) => {
+    getTasksFromDB((tasks) => {
+      console.log(tasks);
+      cb(tasks);
+    });
+  };
 }
-
 
 module.exports = Tasks;
