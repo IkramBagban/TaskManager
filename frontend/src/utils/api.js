@@ -14,9 +14,21 @@ export const getUsers = async () => {
 
   const res = await fetch(`${BASE_URL}/users`);
   const data = await res.json();
-  console.log('data',data)
+  console.log("data", data);
   return data;
 };
+
+export const getTasks = async () => {
+  try{
+
+    const res = await fetch(`${BASE_URL}/tasks`);
+    const data = await res.json();
+    return data;
+  }catch(err){
+    const error = new Error('got error while fetching tasks', err)
+    console.error(error)
+  }
+}
 
 export const postData = async (endpoint, data) => {
   // const existingUser = users?.find((user) => user.email === email);
