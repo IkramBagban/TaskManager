@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:4000";
 export const getUsers = async () => {
   //   const existingUser = users.find(
   //     (user) => user.email === email && password === user.password
@@ -14,6 +14,7 @@ export const getUsers = async () => {
 
   const res = await fetch(`${BASE_URL}/users`);
   const data = await res.json();
+  console.log('data',data)
   return data;
 };
 
