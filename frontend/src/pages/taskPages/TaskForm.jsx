@@ -33,19 +33,15 @@ const TaskForm = () => {
     console.log(`${name} => ${value}`);
   };
 
-  const addTaskHandler = async() => {
-    
-    
-
-    if(Object.values(inputValues).some(val => val.trim() === "")){
-      console.error('All the fields are mandatory.')
-      alert('All the fields are mandatory.')
-      return
+  const addTaskHandler = async () => {
+    if (Object.values(inputValues).some((val) => val.trim() === "")) {
+      console.error("All the fields are mandatory.");
+      alert("All the fields are mandatory.");
+      return;
     }
-    
-    let res = await postData('/tasks/addTask', inputValues)
-    console.log('res',res.data )
-    navigate('/tasks', {state: res?.data })
+
+    const res = await postData("/tasks/addTask", inputValues);
+    navigate("/tasks", { state: res?.data });
 
     setInputValues({
       title: "",
@@ -55,55 +51,62 @@ const TaskForm = () => {
       status: "To-Do",
     });
   };
-  
+
   return (
-    <div style={{display: "flex", justifyContent:'center' , alignItems:'center', flexDirection:'column'}}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <div>
-      <Input
-        label="Title"
-        type="text"
-        name="title"
-        placeHolder="Write Title"
-        onInputChange={inputChangeHandler}
-        value={inputValues.title}
-      />
-      <div>
-        <label htmlFor="description">Description</label>
-        <br />
-        <textarea
-          onChange={inputChangeHandler}
-          name="description"
-          id="description"
-          cols="30"
-          rows="10"
-          value={inputValues.description}
-        ></textarea>
-      </div>
-      <Input
-        label="Due Date"
-        type="Date"
-        name="dueDate"
-        onInputChange={inputChangeHandler}
-        value={inputValues.dueDate}
-      />
+        <Input
+          label="Title"
+          type="text"
+          name="title"
+          placeHolder="Write Title"
+          onInputChange={inputChangeHandler}
+          value={inputValues.title}
+        />
+        <div>
+          <label htmlFor="description">Description</label>
+          <br />
+          <textarea
+            onChange={inputChangeHandler}
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+            value={inputValues.description}
+          ></textarea>
+        </div>
+        <Input
+          label="Due Date"
+          type="Date"
+          name="dueDate"
+          onInputChange={inputChangeHandler}
+          value={inputValues.dueDate}
+        />
 
-      <Dropdown
-        onInputChange={inputChangeHandler}
-        label="Priority"
-        name="priority"
-        options={priorityOptions}
-        selectedValue={inputValues.priority}
-      />
+        <Dropdown
+          onInputChange={inputChangeHandler}
+          label="Priority"
+          name="priority"
+          options={priorityOptions}
+          selectedValue={inputValues.priority}
+        />
 
-      <Dropdown
-        onInputChange={inputChangeHandler}
-        label="Status"
-        name="status"
-        options={statusOptions}
-        selectedValue={inputValues.status}
-      />
+        <Dropdown
+          onInputChange={inputChangeHandler}
+          label="Status"
+          name="status"
+          options={statusOptions}
+          selectedValue={inputValues.status}
+        />
 
-      <button onClick={addTaskHandler}>Add Task</button>
+        <button onClick={addTaskHandler}>Add Task</button>
       </div>
     </div>
   );

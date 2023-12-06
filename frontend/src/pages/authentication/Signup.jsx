@@ -11,12 +11,11 @@ function Signup() {
     confirmPassword: "",
   });
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const singupHandler = async () => {
     const users = await getUsers();
     const existing = users?.find((user) => user.email === input.email);
 
-    // if (!input.email || !input.password) {
     if (Object.values(input).some((val) => val.trim() === "")) {
       console.log("Please Provide Valid Email and password");
       return;
@@ -32,12 +31,11 @@ function Signup() {
         console.log("got error while creating user", result);
         return;
       }
-      // userCtx.setToken("1");
       console.log(
         "User created succefully, go on login page and login  ",
         result
       );
-      navigate('/login')
+      navigate("/login");
     });
 
     console.log("POST DATA", input);

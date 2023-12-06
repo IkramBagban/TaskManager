@@ -5,12 +5,10 @@ const ContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
-  useEffect(() => {
-
-    
-    console.log("users", users);
-    console.log("token of new id", token);
-  }, [token]);
+  // useEffect(() => {  
+  //   console.log("users", users);
+  //   console.log("token of new id", token);
+  // }, [token]);
 
   const updateToken = (newToken) => {
     console.log("TOKEN SET ", token)

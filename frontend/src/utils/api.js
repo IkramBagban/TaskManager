@@ -1,20 +1,7 @@
 const BASE_URL = "http://localhost:4000";
 export const getUsers = async () => {
-  //   const existingUser = users.find(
-  //     (user) => user.email === email && password === user.password
-  //   );
-
-  //   console.log("existingUser", existingUser);
-  //   if (existingUser) {
-  //     updateToken(existingUser.id);
-  //     return;
-  //   }
-
-  //   alert("Please Enter Valid Detail");
-
   const res = await fetch(`${BASE_URL}/users`);
   const data = await res.json();
-  console.log("data", data);
   return data;
 };
 
@@ -30,16 +17,15 @@ export const getTasks = async () => {
 };
 
 export const postData = async (endpoint, data) => {
-  try{
-
+  try {
     const response = await fetch(`${BASE_URL + endpoint}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     return await response.json();
-  }catch(err){
-    console.log("got an error while posting the data.", err)
-    
+  } catch (err) {
+    const error = new Error("got error whileposting the data", err);
+    console.error(error);
   }
 };

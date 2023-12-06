@@ -4,7 +4,6 @@ import Signup from "./Signup";
 import { Link, useNavigate } from "react-router-dom";
 
 function Welcome() {
-  const [activeComponent, setActiveComponent] = useState(null);
   const navigate = useNavigate();
 
   const loginHandler = () => {
@@ -29,11 +28,6 @@ function Welcome() {
           Login
         </Link>{" "}   */}
       </div>
-
-      {/* <dir>
-        {activeComponent === "login" && <Login />}
-        {activeComponent === "signup" && <Signup />}
-      </dir> */}
     </div>
   );
 }

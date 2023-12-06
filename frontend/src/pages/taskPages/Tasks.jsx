@@ -25,7 +25,6 @@ const Tasks = () => {
     <div>
       <button
         onClick={() => {
-          console.log("add task");
           navigate("/tasks/taskform");
         }}
       >
@@ -45,7 +44,7 @@ const Tasks = () => {
             <Link
               style={{ width: "100%" }}
               to={`tasks/${task._id}`}
-              state = { task }
+              state={task}
               key={task._id + Math.random()}
             >
               <Task task={task} />

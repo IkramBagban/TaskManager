@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Input from "../../components/Input";
 
 const EditProfile = () => {
-  // const params = useParams()
   const {
     state: { user },
   } = useLocation();
+
   const [inputValues, setInputValues] = useState({
     username: "",
     phoneNumber: "",
@@ -15,21 +15,19 @@ const EditProfile = () => {
   useEffect(() => {
     user &&
       setInputValues({
-        username : user?.username,
-        phoneNumber : user.phoneNumber
+        username: user?.username,
+        phoneNumber: user.phoneNumber,
       });
-      console.table(user)
+    console.table(user);
   }, [user]);
 
-  const inputChangeHandler = (e) =>{
-    const {name, value} = e.target;
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
 
-    setInputValues(prev =>{
-      return {...prev, [name] : value}
-    })
-    
-  }
-  console.log("edit", user);
+    setInputValues((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
   return (
     <div>
       <h1>edit profile</h1>
