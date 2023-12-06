@@ -18,7 +18,7 @@ const Tasks = () => {
 
   useEffect(() => {
     if (!state) return;
-    setTasks((prev) => [state, ...prev]);
+    setTasks((prev) => [...prev, state]);
   }, [state]);
 
   return (
@@ -45,7 +45,8 @@ const Tasks = () => {
             <Link
               style={{ width: "100%" }}
               to={`tasks/${task._id}`}
-              key={task._id}
+              state = { task }
+              key={task._id + Math.random()}
             >
               <Task task={task} />
             </Link>

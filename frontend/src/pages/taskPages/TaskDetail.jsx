@@ -1,16 +1,29 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const TaskDetail = () => {
-
-  
-  console.log("details")
-  const params = useParams();
-  console.log('params', params)
+  console.log("details");
+  const { state: task } = useLocation();
   return (
-    <div>TaskDetail : {params.taskId}</div>
-  )
-}
+    <div style={{border:'1px solid black', width: '40%'}}>
+      <div>
+        <div>
+          <h1>{task?.title}</h1>
+          {/* <p>TaskDetail : { task?.taskId}</p> */}
+        </div>
 
-export default TaskDetail
+        <div>
+          <span style={{padding: '0px 5px', border:'1px solid black', margin: '0 3px'}}>{task?.status}</span>
+          <span style={{padding: '0px 5px', border:'1px solid black', margin: '0 3px'}}>{task?.priority}</span>
+          <span style={{padding: '0px 5px', border:'1px solid black', margin: '0 3px'}}>{task?.dueDate}</span>
+        </div>
+      </div>
+
+      <div>
+        <p>{task?.description}</p>
+      </div>
+    </div>
+  );
+};
+
+export default TaskDetail;
