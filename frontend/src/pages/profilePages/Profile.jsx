@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUsers } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -19,8 +19,9 @@ const Profile = () => {
   const editClickHandler = () => {
     navigate(`/profile/${token}`, { state: { user } });
   };
-  return (
+  return (  
     <div>
+      <Outlet />
       <h3>{user?.username}</h3>
       <p>{user?.email}</p>
       <p>{user?.phoneNumber}</p>

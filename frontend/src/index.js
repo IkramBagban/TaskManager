@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile/>,
-        children: [{ path: "profile/:edit", element: <EditProfile /> }],
+        children: [{ path: ":edit", element: <EditProfile /> }],
       },
       {
         path: "tasks",

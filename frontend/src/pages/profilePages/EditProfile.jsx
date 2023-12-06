@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 
 const EditProfile = () => {
   const {
     state: { user },
   } = useLocation();
-
+const navigate = useNavigate()
   const [inputValues, setInputValues] = useState({
     username: "",
     phoneNumber: "",
@@ -44,7 +44,7 @@ const EditProfile = () => {
         onInputChange={inputChangeHandler}
       />
 
-      <button>Update Profile</button>
+      <button onClick={()=> navigate('/profile')}>Update Profile</button>
     </div>
   );
 };
