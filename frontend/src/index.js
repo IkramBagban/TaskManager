@@ -1,3 +1,4 @@
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -18,23 +19,23 @@ import TaskForm from "./pages/taskPages/TaskForm";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: App,
+    element: <App />,
     children: [
-      { path: "welcome", Component: Welcome },
-      { path: "login", Component: Login },
-      { path: "signup", Component: Signup },
-      { path: "home", Component: Home },
+      { path: "welcome", element: <Welcome /> },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup />},
+      { path: "home", element: <Home /> },
       {
         path: "profile",
-        Component: Profile,
-        children: [{ path: "profile/:edit", Component: EditProfile }],
+        element: <Profile/>,
+        children: [{ path: "profile/:edit", element: <EditProfile /> }],
       },
       {
         path: "tasks",
-        Component: Tasks,
+        element: <Tasks />,
         children: [
-          { path: "taskForm", Component: TaskForm },
-          { path: "tasks/:taskId", Component: TaskDetail },
+          { path: "taskForm", element: <TaskForm /> },
+          { path: "tasks/:taskId", element: <TaskDetail /> },
         ],
       },
     ],
