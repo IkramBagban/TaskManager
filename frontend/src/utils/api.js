@@ -5,25 +5,16 @@ export const getUsers = async () => {
   return data;
 };
 
-export const getTasks = async () => {
+
+export const getData = async (endpoint) => {
   try {
-    const res = await fetch(`${BASE_URL}/tasks`);
-    const data = await res.json();
+    const response = await fetch(`${BASE_URL}/${endpoint}`);
+    const data = await response.json();
     return data;
-  } catch (err) {
-    const error = new Error("got error while fetching tasks", err);
+  } catch (error) {
     console.error(error);
   }
 };
-
-export const getData = async (endpoint)=>{
-  try {
-    const response = fetch(`${BASE_URL}/${endpoint}`)
-    return await response.json();
-  } catch (error) {
-    console.error(error)
-  }
-}
 
 export const postData = async (endpoint, data) => {
   try {

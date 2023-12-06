@@ -2,23 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import Task from "../../components/Task";
 import { getTasks } from "../../utils/api";
+import useFetch from "../../customHooks/useFetch";
 
 const Tasks = () => {
   const navigate = useNavigate();
+  const [taskData, isLoading, isError] = useFetch("tasks");
   const [tasks, setTasks] = useState(null);
 
   const { state } = useLocation();
 
   useEffect(() => {
-    (async function () {
-      const tasksData = await getTasks();
-      setTasks(tasksData);
-    })();
-  }, []);
+    if (!isError) setTasks(taskData);
+  }, [taskData, isError, isLoading]);
 
   useEffect(() => {
-    if (!state) return;
-    setTasks((prev) => [...prev, state]);
+    if (state) setTasks((prev) => [...prev, state]);
   }, [state]);
 
   return (
