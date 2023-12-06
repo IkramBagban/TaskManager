@@ -19,30 +19,17 @@ export const getUsers = async () => {
 };
 
 export const getTasks = async () => {
-  try{
-
+  try {
     const res = await fetch(`${BASE_URL}/tasks`);
     const data = await res.json();
     return data;
-  }catch(err){
-    const error = new Error('got error while fetching tasks', err)
-    console.error(error)
+  } catch (err) {
+    const error = new Error("got error while fetching tasks", err);
+    console.error(error);
   }
-}
+};
 
 export const postData = async (endpoint, data) => {
-  // const existingUser = users?.find((user) => user.email === email);
-  // if (existingUser) {
-  //   alert("This Is An Existing Email.");
-  //   return;
-  // }
-  // if (!email || !password) {
-  //   alert("Both The Field Are Mandatory!");
-  //   return;
-  // }
-
-  // const newUser = { email, password, id: users.length + 1 };
-
   return await fetch(`${BASE_URL + endpoint}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -55,3 +42,6 @@ export const postData = async (endpoint, data) => {
   // setUsers((prevUsers) => [...prevUsers, newUser]);
   // setToken(newUser?.id);
 };
+
+
+

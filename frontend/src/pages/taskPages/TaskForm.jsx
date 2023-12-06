@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import Dropdown from "../../components/Dropdown";
 import { useNavigate } from "react-router-dom";
+import { postData } from "../../utils/api";
 
 const priorityOptions = [
   { value: "Low" },
@@ -16,7 +17,6 @@ const statusOptions = [
 ];
 
 const TaskForm = () => {
-  // console.log("TAKSFOMRS")
   const [inputValues, setInputValues] = useState({
     title: "",
     description: "",
@@ -33,9 +33,14 @@ const TaskForm = () => {
     console.log(`${name} => ${value}`);
   };
 
-  const addTaskHandler = () => {
+  const addTaskHandler = async() => {
     navigate('/tasks')
     console.log(inputValues)
+
+    let res = await postData('/tasks/addTask', inputValues)
+    // res =await res.json()
+    console.log('res',res?.data )
+
     setInputValues({
       title: "",
       description: "",
@@ -43,6 +48,8 @@ const TaskForm = () => {
       priority: "Low",
       status: "To-Do",
     });
+
+
 
   };
   

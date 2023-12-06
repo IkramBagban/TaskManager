@@ -60,7 +60,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import App, { Routing } from "./App";
 import ContextProvider from "./store/ContextProvider";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/authentication/Login";
@@ -77,25 +77,25 @@ import TaskForm from "./pages/taskPages/TaskForm";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    Component: App,
     children: [
-      { path: "welcome", element: <Welcome /> },
-      { path: "login", element: <Login /> },
-      { path: "signup", element: <Signup /> },
-      { path: "home", element: <Home /> },
+      { path: "welcome", Component: Welcome },
+      { path: "login", Component: Login },
+      { path: "signup", Component: Signup },
+      { path: "home", Component: Home },
       {
         path: "profile",
-        element: <Profile />,
+        Component: Profile,
+        children: [{ path: "profile/:edit", Component: EditProfile }],
       },
-      { path: "profile/:edit", element: <EditProfile /> },
       {
         path: "tasks",
-        element: <Tasks />,
-        // children: [
-        // ],
+        Component: Tasks,
+        children: [
+          { path: "taskForm", Component: TaskForm },
+          { path: "tasks/:taskId", Component: TaskDetail },
+        ],
       },
-      { path: "tasks/:taskId", element: <TaskDetail /> },
-      { path: "taskForm", element: <TaskForm /> },
     ],
   },
 ]);
@@ -104,7 +104,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ContextProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} />;
     </ContextProvider>
   </React.StrictMode>
 );

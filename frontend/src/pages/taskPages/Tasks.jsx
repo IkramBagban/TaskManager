@@ -1,45 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Task from "../../components/Task";
 import { getTasks } from "../../utils/api";
 
-// const tasks = [
-//   {
-//     _id: 1,
-//     title: "TITLE 1",
-//     description: " description 1",
-//     dueDate: "04/12/2023",
-//     priority: "low",
-//     status: "To-Do",
-//   },
-//   {
-//     _id: 2,
-//     title: "TITLE 2",
-//     description: " description 2",
-//     dueDate: "24/12/2023",
-//     priority: "High",
-//     status: "In Progress",
-//   },
-//   {
-//     _id: 3,
-//     title: "TITLE 3",
-//     description: " description 3",
-//     dueDate: "01/12/2023",
-//     priority: "high",
-//     status: "Completed",
-//   },
-// ];
-
 const Tasks = () => {
   const navigate = useNavigate();
-  const [tasks, setTasks] = useState(null)
+  const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
     (async function () {
       const tasksData = await getTasks();
-      setTasks(tasksData)
+      setTasks(tasksData);
     })();
-  },[]);
+  }, []);
   console.log("tasksData", tasks);
 
   return (
@@ -47,12 +20,12 @@ const Tasks = () => {
       <button
         onClick={() => {
           console.log("add task");
-          navigate("/taskform");
+          navigate("/tasks/taskform");
         }}
       >
         Add Task
       </button>
-
+      <Outlet />
       <div
         style={{
           display: "flex",
@@ -63,7 +36,7 @@ const Tasks = () => {
       >
         {tasks?.map((task) => {
           return (
-            <Link style={{ width: "100%" }} to={`${task._id}`} key={task._id}>
+            <Link style={{ width: "100%" }} to={`tasks/${task._id}`} key={task._id}>
               <Task task={task} />
             </Link>
           );
