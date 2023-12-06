@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import Task from "../../components/Task";
 import { getTasks } from "../../utils/api";
 
@@ -7,13 +7,19 @@ const Tasks = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState(null);
 
+  const { state } = useLocation();
+
   useEffect(() => {
     (async function () {
       const tasksData = await getTasks();
       setTasks(tasksData);
     })();
   }, []);
-  console.log("tasksData", tasks);
+
+  useEffect(() => {
+    if (!state) return;
+    setTasks((prev) => [state, ...prev]);
+  }, [state]);
 
   return (
     <div>
@@ -36,7 +42,11 @@ const Tasks = () => {
       >
         {tasks?.map((task) => {
           return (
-            <Link style={{ width: "100%" }} to={`tasks/${task._id}`} key={task._id}>
+            <Link
+              style={{ width: "100%" }}
+              to={`tasks/${task._id}`}
+              key={task._id}
+            >
               <Task task={task} />
             </Link>
           );

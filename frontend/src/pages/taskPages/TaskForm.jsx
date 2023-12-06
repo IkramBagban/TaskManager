@@ -34,15 +34,18 @@ const TaskForm = () => {
   };
 
   const addTaskHandler = async() => {
-    navigate('/tasks')
-    console.log(inputValues)
+    
+    
 
+    if(Object.values(inputValues).some(val => val.trim() === "")){
+      console.error('All the fields are mandatory.')
+      alert('All the fields are mandatory.')
+      return
+    }
+    
     let res = await postData('/tasks/addTask', inputValues)
-    
-    
-    // res =await res.json()
-    // console.log('res',JSON.parse(res.json()))
-    console.log('res',res )
+    console.log('res',res.data )
+    navigate('/tasks', {state: res?.data })
 
     setInputValues({
       title: "",
@@ -51,9 +54,6 @@ const TaskForm = () => {
       priority: "Low",
       status: "To-Do",
     });
-
-
-
   };
   
   return (
