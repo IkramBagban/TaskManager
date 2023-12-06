@@ -30,18 +30,18 @@ export const getTasks = async () => {
 };
 
 export const postData = async (endpoint, data) => {
-  return await fetch(`${BASE_URL + endpoint}`, {
+  const response = await fetch(`${BASE_URL + endpoint}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
-  })
-    .then((res) => res.json)
-    .then((data) => data)
-    .catch((err) => err);
+  });
+  // const responseData =
+  return await response.json();
+
+  // .then((res) => res.json)
+  // .then((data) => data)
+  // .catch((err) => err);
 
   // setUsers((prevUsers) => [...prevUsers, newUser]);
   // setToken(newUser?.id);
 };
-
-
-

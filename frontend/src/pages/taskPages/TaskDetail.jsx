@@ -7,7 +7,7 @@ const TaskDetail = () => {
   
   console.log("details")
   const params = useParams();
-  console.log(params)
+  console.log('params', params)
   return (
     <div>TaskDetail : {params.taskId}</div>
   )

@@ -38,8 +38,11 @@ const TaskForm = () => {
     console.log(inputValues)
 
     let res = await postData('/tasks/addTask', inputValues)
+    
+    
     // res =await res.json()
-    console.log('res',res?.data )
+    // console.log('res',JSON.parse(res.json()))
+    console.log('res',res )
 
     setInputValues({
       title: "",
