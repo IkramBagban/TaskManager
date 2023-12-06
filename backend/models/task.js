@@ -27,7 +27,7 @@ class Tasks {
     this.status = status;
   }
 
-  save() {
+  save(res) {
     getTasksFromDB((tasks) => {
     if(this._id){
       console.log('edit mode.')  
@@ -41,7 +41,7 @@ class Tasks {
           console.error(error);
           throw error;
         }
-
+        res.status(201).send({message: "Task Added Successfully",data : this })
         console.log("Task Has Been Added.");
       });
     });
