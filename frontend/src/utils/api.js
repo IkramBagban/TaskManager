@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:4000";
+export const BASE_URL = "http://localhost:4000";
 export const getUsers = async () => {
   const res = await fetch(`${BASE_URL}/users`);
   const data = await res.json();
@@ -15,6 +15,15 @@ export const getTasks = async () => {
     console.error(error);
   }
 };
+
+export const getData = async (endpoint)=>{
+  try {
+    const response = fetch(`${BASE_URL}/${endpoint}`)
+    return await response.json();
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export const postData = async (endpoint, data) => {
   try {
