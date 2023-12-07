@@ -17,16 +17,14 @@ exports.createUser = (req, res, next) => {
   console.log(req.body);
   const { username, phoneNumber, email, password } = req.body;
   
-  Users.getUsers((users) => {
-    const id = users.length + 1;
+  // Users.getUsers((users) => {
+  //   const id = users.length + 1;
+  // });
 
-    const user = new Users(id, username, phoneNumber, email, password);
-    user.save();
+    const user = new Users(null, username, phoneNumber, email, password);
+    user.save(res);
 
-    res.json({
-      message: "User Created Successfully",
-    });
-  });
+   
 };
 
 exports.getUser = (req, res, next) => {

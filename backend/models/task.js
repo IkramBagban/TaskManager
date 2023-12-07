@@ -29,19 +29,19 @@ class Tasks {
 
   save(res) {
     getTasksFromDB((tasks) => {
-    if(this._id){
-      console.log('edit mode.')  
-      return
-    }
+      if (this._id) {
+        console.log("edit mode.");
+        return;
+      }
       tasks.push(this);
-      this._id = tasks.length+1;
+      this._id = tasks.length + 1;
       fs.writeFile(tasksDBPath, JSON.stringify(tasks), (err) => {
         if (err) {
           const error = new Error("got an error while updating the file.", err);
           console.error(error);
           throw error;
         }
-        res.status(201).send({message: "Task Added Successfully",data : this   })
+        res.status(201).send({ message: "Task Added Successfully", data: this });
         console.log("Task Has Been Added.");
       });
     });
