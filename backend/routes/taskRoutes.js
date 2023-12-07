@@ -9,5 +9,7 @@ router.get('/', taskController.getTasks);
 
 router.post('/addTask', taskController.postTask)
 
+router.put('/edit/:id', taskController.updateTask)
+
 
 module.exports = router;

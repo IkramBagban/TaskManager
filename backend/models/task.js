@@ -29,28 +29,52 @@ class Tasks {
 
   save(res) {
     getTasksFromDB((tasks) => {
+      // update task.
       if (this._id) {
-        console.log("edit mode.");
-        
+        const taskIndex = tasks.findIndex(
+          (t) => t._id.toString() === this._id.toString()
+        );
+
+        if (taskIndex === -1) {
+          res.status(404).json({ message: "Task Not Found." });
+          return;
+        }
+
+        tasks[taskIndex] = this;
+
+        fs.writeFile(tasksDBPath, JSON.stringify(tasks), (err) => {
+          if (err) {
+            res.status(500).json({ message: "Error While Updating Task" });
+            return;
+          }
+
+          res
+            .status(200)
+            .json({ message: "Task Updated Successfully.", data: this });
+        });
         return;
       }
+
+      // create new task.
       tasks.push(this);
       this._id = tasks.length + 1;
+
       fs.writeFile(tasksDBPath, JSON.stringify(tasks), (err) => {
         if (err) {
           const error = new Error("got an error while updating the file.", err);
-          console.error(error);
+          res.status(500).json({ message: "Error Updatin Task" });
           throw error;
         }
-        res.status(201).send({ message: "Task Added Successfully", data: this });
-        console.log("Task Has Been Added.");
+
+        res
+          .status(201)
+          .send({ message: "Task Added Successfully", data: this });
       });
     });
   }
 
   static getTasks = (cb) => {
     getTasksFromDB((tasks) => {
-      console.log(tasks);
       cb(tasks);
     });
   };
