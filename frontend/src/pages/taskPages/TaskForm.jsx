@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Dropdown from "../../components/Dropdown";
-import { useNavigate } from "react-router-dom";
-import { postData } from "../../utils/api";
+import { useLocation, useNavigate } from "react-router-dom";
+import { postData, updateData } from "../../utils/api";
 
 const priorityOptions = [
   { value: "Low" },
@@ -17,6 +17,7 @@ const statusOptions = [
 ];
 
 const TaskForm = () => {
+  // const isEdit = true;
   const [inputValues, setInputValues] = useState({
     title: "",
     description: "",
@@ -26,6 +27,8 @@ const TaskForm = () => {
   });
 
   const navigate = useNavigate();
+  const { state } = useLocation();
+  // const {isEditing, task} = state;
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -41,7 +44,7 @@ const TaskForm = () => {
     }
 
     const res = await postData("/tasks/addTask", inputValues);
-    navigate("/tasks", { state: res?.data });
+    navigate("/tasks", { state: {newTask : res?.data }});
 
     setInputValues({
       title: "",
@@ -50,6 +53,38 @@ const TaskForm = () => {
       priority: "Low",
       status: "To-Do",
     });
+  };
+
+  useEffect(() => {
+    if (!state?.isEditing) return;
+    const { title, description, dueDate, priority, status } = state?.task;
+    setInputValues({
+      title,
+      description,
+      dueDate,
+      priority,
+      status,
+    });
+  }, []);
+
+  const updateTaskHandler = async () => {
+    const response = await updateData(
+      `tasks/edit/${state?.task?._id}`,
+      inputValues
+    );
+    console.log("res", response);
+    if(response){
+      navigate('/tasks', {state: {updatedTask : inputValues}})
+    }
+  };
+
+  const taskButtonHandler = () => {
+    if (state?.isEditing) {
+      updateTaskHandler(); // editing existing task
+      return;
+    }
+
+    addTaskHandler(); // create new task
   };
 
   return (
@@ -106,7 +141,9 @@ const TaskForm = () => {
           selectedValue={inputValues.status}
         />
 
-        <button onClick={addTaskHandler}>Add Task</button>
+        <button onClick={taskButtonHandler}>
+          {!!state?.isEditing ? "Update task" : "Add Task"}
+        </button>
       </div>
     </div>
   );

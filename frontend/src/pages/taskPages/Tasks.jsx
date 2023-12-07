@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import Task from "../../components/Task";
-import { getTasks } from "../../utils/api";
 import useFetch from "../../customHooks/useFetch";
 
 const Tasks = () => {
   const navigate = useNavigate();
   const [taskData, isLoading, isError] = useFetch("tasks");
   const [tasks, setTasks] = useState(null);
-
+  
   const { state } = useLocation();
+
 
   useEffect(() => {
     if (!isError) setTasks(taskData);
   }, [taskData, isError, isLoading]);
 
   useEffect(() => {
-    const isExsting = tasks?.some((t) => t?._id === state?._id);
+    const isExsting = tasks?.some((t) => t?._id === state?.newTask?._id);
     if (isExsting) return; // prevent doubling items.
-    if (state) setTasks((prev) => [...prev, state]);
-  }, [state]);
+    if (state?.newTask) setTasks((prev) => [...prev, state?.newTask]);
+  }, [state?.newTask]);
+  
 
   return (
     <div>
@@ -48,6 +49,7 @@ const Tasks = () => {
               key={task._id + Math.random()}
             >
               <Task task={task} />
+              
             </Link>
           );
         })}
