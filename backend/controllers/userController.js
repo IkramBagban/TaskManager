@@ -34,3 +34,13 @@ exports.getUser = (req, res, next) => {
     res.json(user);
   });
 };
+
+
+exports.updateUser = (req,res,next) => {
+  const id = req.params.id;
+  const {username, phoneNumber, email, password} = req.body;
+
+  console.log('saving user')
+  const user = new Users(id, username, phoneNumber, email, password);
+  user.save(res);
+}
