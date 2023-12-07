@@ -35,7 +35,7 @@ class Users {
           return;
         }
 
-        users[userIndex] = this;
+        users[userIndex] = {...this};
 
         fs.writeFile(usersDBPath, JSON.stringify(users), (err) => {
           if (err) {

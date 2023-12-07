@@ -16,6 +16,8 @@ const Tasks = () => {
   }, [taskData, isError, isLoading]);
 
   useEffect(() => {
+    const isExsting = tasks?.some((t) => t?._id === state?._id);
+    if (isExsting) return; // prevent doubling items.
     if (state) setTasks((prev) => [...prev, state]);
   }, [state]);
 

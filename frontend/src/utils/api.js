@@ -5,7 +5,6 @@ export const getUsers = async () => {
   return data;
 };
 
-
 export const getData = async (endpoint) => {
   try {
     const response = await fetch(`${BASE_URL}/${endpoint}`);
@@ -27,5 +26,22 @@ export const postData = async (endpoint, data) => {
   } catch (err) {
     const error = new Error("got error whileposting the data", err);
     console.error(error);
+  }
+};
+
+export const updateData = async (endpoint, data) => {
+  console.log('ddd',data)
+  try {
+    const response = await fetch(`${BASE_URL}/${endpoint}`, {
+      method: "PUT",
+      headers : {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data),
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.error(new Error(error));
   }
 };
