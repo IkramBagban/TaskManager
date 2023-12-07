@@ -40,9 +40,7 @@ class Users {
         fs.writeFile(usersDBPath, JSON.stringify(updatedUsers), (err) => {
           if (err) {
             res.status(500).json({ message: "Error Updating Fail" });
-            console.error("Error while updating user.", err);
           } else {
-            console.log("user has been updated.");
             res
               .status(200)
               .json({ message: "User Updated successfully.", data: this });
@@ -57,9 +55,7 @@ class Users {
       fs.writeFile(usersDBPath, JSON.stringify(users), (err) => {
         if (err) {
           res.status(500).json({ message: "Error Creating User." });
-          console.error("Error writing to file:", err);
         } else {
-          console.info("User Created Successfully");
           res.status(201).json({
             message: "User Created Successfully",
             data: this,
