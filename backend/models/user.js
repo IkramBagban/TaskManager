@@ -26,9 +26,7 @@ class Users {
     getUsersFromDB((users) => {
       // edit existing user.
       if (this.id) {
-        console.log("edit");
-        const updatedUsers = [...users];
-        const userIndex = updatedUsers.findIndex(
+        const userIndex = users.findIndex(
           (u) => u.id.toString() === this.id.toString()
         );
 
@@ -36,8 +34,10 @@ class Users {
           res.status(404).json({ message: "User Not Found." });
           return;
         }
-        updatedUsers[userIndex] = this;
-        fs.writeFile(usersDBPath, JSON.stringify(updatedUsers), (err) => {
+
+        users[userIndex] = this;
+
+        fs.writeFile(usersDBPath, JSON.stringify(users), (err) => {
           if (err) {
             res.status(500).json({ message: "Error Updating Fail" });
           } else {

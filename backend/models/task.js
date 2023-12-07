@@ -31,6 +31,7 @@ class Tasks {
     getTasksFromDB((tasks) => {
       if (this._id) {
         console.log("edit mode.");
+        
         return;
       }
       tasks.push(this);
