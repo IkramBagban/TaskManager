@@ -9,8 +9,8 @@ import { TaskContext } from "../../store/TaskContext";
 const Tasks = () => {
   const navigate = useNavigate();
   const [taskData, isLoading, isError] = useFetch("tasks");
-  const [tasks, setTasks] = useState(null);
   const taskCtx = useContext(TaskContext);
+
   // const dispatch = useDispatch();
 
   // const tasksFromStore = useSelector(state => state.tasks)
@@ -19,17 +19,14 @@ const Tasks = () => {
 
   useEffect(() => {
     if (!isError) {
-      setTasks(taskData);
       taskCtx.setTasksToStore(taskData);
-      // dispatch(addTasksToStore(taskData))
     }
   }, [taskData, isError, isLoading]);
 
   useEffect(() => {
-    const isExsting = tasks?.some((t) => t?._id === state?.newTask?._id);
+    const isExsting = taskCtx.tasks?.some((t) => t?._id === state?.newTask?._id);
     if (isExsting) return; // prevent doubling items.
     if (state?.newTask) {
-      setTasks((prev) => [...prev, state?.newTask]);
       taskCtx.setTasksToStore((prev) => [...prev, state?.newTask]);
     }
   }, [state?.newTask]);
@@ -54,7 +51,7 @@ const Tasks = () => {
           alignItems: "center",
         }}
       >
-        {tasks?.map((task) => {
+        {taskCtx.tasks?.map((task) => {
           return (
             <Link
               style={{ width: "100%" }}
