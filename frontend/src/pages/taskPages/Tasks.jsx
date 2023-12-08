@@ -15,23 +15,18 @@ const Tasks = () => {
 
   // const tasksFromStore = useSelector(state => state.tasks)
 
-  const { state } = useLocation();
 
   useEffect(() => {
-    if (!isError) {
-      taskCtx.setTasksToStore(taskData);
-    }
+    if (!isError) taskCtx.setTasksToStore(taskData);
   }, [taskData, isError, isLoading]);
 
-  useEffect(() => {
-    const isExsting = taskCtx.tasks?.some((t) => t?._id === state?.newTask?._id);
-    if (isExsting) return; // prevent doubling items.
-    if (state?.newTask) {
-      taskCtx.setTasksToStore((prev) => [...prev, state?.newTask]);
-    }
-  }, [state?.newTask]);
-
-  // console.log('tasks from store.', tasksFromStore)
+  // useEffect(() => {
+  //   const isExsting = taskCtx.tasks?.some((t) => t?._id === state?.newTask?._id);
+  //   if (isExsting) return; // prevent doubling items.
+  //   if (state?.newTask) {
+  //     taskCtx.setTasksToStore((prev) => [...prev, state?.newTask]);
+  //   }
+  // }, [state?.newTask]);
 
   return (
     <div>

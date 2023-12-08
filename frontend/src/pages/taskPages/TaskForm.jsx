@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Dropdown from "../../components/Dropdown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postData, updateData } from "../../utils/api";
+import { TaskContext } from "../../store/TaskContext";
 
 const priorityOptions = [
   { value: "Low" },
@@ -26,6 +27,7 @@ const TaskForm = () => {
     status: "To-Do",
   });
 
+  const taskCtx = useContext(TaskContext)
   const navigate = useNavigate();
   const { state } = useLocation();
   // const {isEditing, task} = state;
@@ -43,8 +45,11 @@ const TaskForm = () => {
       return;
     }
 
-    const res = await postData("/tasks/addTask", inputValues);
-    navigate("/tasks", { state: {newTask : res?.data }});
+    const {data :newTask} = await postData("/tasks/addTask", inputValues);
+    // const newTask = res?.data;
+    taskCtx.addTask(newTask)
+    navigate("/tasks");
+
 
     setInputValues({
       title: "",
