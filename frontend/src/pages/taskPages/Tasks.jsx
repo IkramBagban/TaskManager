@@ -11,22 +11,9 @@ const Tasks = () => {
   const [taskData, isLoading, isError] = useFetch("tasks");
   const taskCtx = useContext(TaskContext);
 
-  // const dispatch = useDispatch();
-
-  // const tasksFromStore = useSelector(state => state.tasks)
-
-
   useEffect(() => {
     if (!isError) taskCtx.setTasksToStore(taskData);
-  }, [taskData, isError, isLoading]);
-
-  // useEffect(() => {
-  //   const isExsting = taskCtx.tasks?.some((t) => t?._id === state?.newTask?._id);
-  //   if (isExsting) return; // prevent doubling items.
-  //   if (state?.newTask) {
-  //     taskCtx.setTasksToStore((prev) => [...prev, state?.newTask]);
-  //   }
-  // }, [state?.newTask]);
+  }, [taskData, isError, isLoading,taskCtx]);
 
   return (
     <div>

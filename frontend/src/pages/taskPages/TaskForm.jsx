@@ -46,7 +46,7 @@ const TaskForm = () => {
     }
 
     const {data :newTask} = await postData("/tasks/addTask", inputValues);
-    // const newTask = res?.data;
+  
     taskCtx.addTask(newTask)
     navigate("/tasks");
 
