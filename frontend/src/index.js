@@ -14,8 +14,9 @@ import EditProfile from "./pages/profilePages/EditProfile";
 import Tasks from "./pages/taskPages/Tasks";
 import TaskDetail from "./pages/taskPages/TaskDetail";
 import TaskForm from "./pages/taskPages/TaskForm";
-import { Provider } from "react-redux";
-import store from "./store/reduxtookit/store";
+import { TaskProvider } from "./store/TaskContext";
+// import { Provider } from "react-redux";
+// import store from "./store/reduxtookit/store";
 
 const router = createBrowserRouter([
   {
@@ -46,10 +47,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ContextProvider>
-        <RouterProvider router={router} />;
-      </ContextProvider>
-    </Provider>
+    <ContextProvider>
+      {/* <Provider store={store}> */}
+      <TaskProvider>
+        <RouterProvider router={router} />
+      </TaskProvider>
+      {/* </Provider> */}
+    </ContextProvider>
   </React.StrictMode>
 );

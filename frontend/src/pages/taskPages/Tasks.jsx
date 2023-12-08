@@ -1,26 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import Task from "../../components/Task";
 import useFetch from "../../customHooks/useFetch";
+import { TaskContext } from "../../store/TaskContext";
+// import { useDispatch, useSelector } from "react-redux";
+// import { addTasksToStore } from "../../store/reduxtookit/taskSlice";
 
 const Tasks = () => {
   const navigate = useNavigate();
   const [taskData, isLoading, isError] = useFetch("tasks");
   const [tasks, setTasks] = useState(null);
-  
+  const taskCtx = useContext(TaskContext);
+  // const dispatch = useDispatch();
+
+  // const tasksFromStore = useSelector(state => state.tasks)
+
   const { state } = useLocation();
 
-
   useEffect(() => {
-    if (!isError) setTasks(taskData);
+    if (!isError) {
+      setTasks(taskData);
+      taskCtx.setTasksToStore(taskData);
+      // dispatch(addTasksToStore(taskData))
+    }
   }, [taskData, isError, isLoading]);
 
   useEffect(() => {
     const isExsting = tasks?.some((t) => t?._id === state?.newTask?._id);
     if (isExsting) return; // prevent doubling items.
-    if (state?.newTask) setTasks((prev) => [...prev, state?.newTask]);
+    if (state?.newTask) {
+      setTasks((prev) => [...prev, state?.newTask]);
+      taskCtx.setTasksToStore((prev) => [...prev, state?.newTask]);
+    }
   }, [state?.newTask]);
-  
+
+  // console.log('tasks from store.', tasksFromStore)
 
   return (
     <div>
@@ -49,7 +63,6 @@ const Tasks = () => {
               key={task._id + Math.random()}
             >
               <Task task={task} />
-              
             </Link>
           );
         })}
