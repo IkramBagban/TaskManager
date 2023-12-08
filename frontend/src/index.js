@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -15,6 +14,8 @@ import EditProfile from "./pages/profilePages/EditProfile";
 import Tasks from "./pages/taskPages/Tasks";
 import TaskDetail from "./pages/taskPages/TaskDetail";
 import TaskForm from "./pages/taskPages/TaskForm";
+import { Provider } from "react-redux";
+import store from "./store/reduxtookit/store";
 
 const router = createBrowserRouter([
   {
@@ -23,11 +24,11 @@ const router = createBrowserRouter([
     children: [
       { path: "welcome", element: <Welcome /> },
       { path: "login", element: <Login /> },
-      { path: "signup", element: <Signup />},
+      { path: "signup", element: <Signup /> },
       { path: "home", element: <Home /> },
       {
         path: "profile",
-        element: <Profile/>,
+        element: <Profile />,
         children: [{ path: ":edit", element: <EditProfile /> }],
       },
       {
@@ -45,8 +46,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ContextProvider>
-      <RouterProvider router={router} />;
-    </ContextProvider>
+    <Provider store={store}>
+      <ContextProvider>
+        <RouterProvider router={router} />;
+      </ContextProvider>
+    </Provider>
   </React.StrictMode>
 );
