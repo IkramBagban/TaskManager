@@ -11,20 +11,22 @@ export const TaskProvider = ({children}) =>{
     const [tasks, setTasks] = useState();
 
     const addTask = (task) => {
-        console.log('task has been added to store.')
-        setTasks(prev => ([...prev, task]))
+        console.log('task has been added to store.',task)
+        setTasks(prev => [...prev, task])
     }
 
     const updateTask = (updatedTask)=>{
+        console.log('udpated task', updatedTask)
         const {_id} = updatedTask;
-        const taskIndex = tasks.findIndex(t => t._id.toString() === _id.toString())
+        const taskIndex = tasks.findIndex(t => t._id    === _id)
         
         if(taskIndex === -1) {
             alert('task not found.')
             return;
         }
 
-        tasks[taskIndex] = updateTask;
+        tasks[taskIndex] = updatedTask;
+        setTasks([...tasks])
     }
 
     const value = {

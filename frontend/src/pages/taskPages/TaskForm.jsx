@@ -27,7 +27,7 @@ const TaskForm = () => {
     status: "To-Do",
   });
 
-  const taskCtx = useContext(TaskContext)
+  const taskCtx = useContext(TaskContext);
   const navigate = useNavigate();
   const { state } = useLocation();
   // const {isEditing, task} = state;
@@ -45,11 +45,14 @@ const TaskForm = () => {
       return;
     }
 
-    const {data :newTask} = await postData("/tasks/addTask", inputValues);
-  
-    taskCtx.addTask(newTask)
-    navigate("/tasks");
+    postData("/tasks/addTask", inputValues).then((newTask) => {
+      taskCtx.addTask(newTask);
+      navigate("/tasks");
+    });
 
+    //     if(newTask){
+    // console.log('under ',newTask)
+    //     }
 
     setInputValues({
       title: "",
@@ -78,8 +81,9 @@ const TaskForm = () => {
       inputValues
     );
     console.log("res", response);
-    if(response){
-      navigate('/tasks', {state: {updatedTask : inputValues}})
+    if (response) {
+      navigate("/tasks");
+      taskCtx.updateTask(response?.data);
     }
   };
 
