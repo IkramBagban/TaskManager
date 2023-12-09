@@ -7,9 +7,6 @@ const taskSlice = createSlice({
   },
   reducers: {
     addTasksToStore: (state, action) => {
-    // const tasks = action.payload
-    // console.log(tasks)
-    // if(action.payload && action.payload?.length <= 1) return;
     if(action.payload) state.tasks = action.payload.reverse();
     },
     addTask: (state, action) => {
@@ -26,8 +23,12 @@ const taskSlice = createSlice({
 
       state.tasks[taskIndex] = action.payload;
     },
+
+    emptyTasks : (state)=>{
+        state.tasks = []
+    }
   },
 });
 
-export const { addTasksToStore, addTask, updateTask } = taskSlice.actions;
+export const { addTasksToStore, addTask, updateTask,emptyTasks } = taskSlice.actions;
 export default taskSlice.reducer;

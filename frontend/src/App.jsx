@@ -27,11 +27,13 @@ function App() {
   }, [userCtx.token]);
 
   useEffect(() => {
-    if (!isError && userCtx.token) {
-      dispatch(addTasksToStore(taskData));
+    console.log('token',userCtx.token)
+    if (taskData && userCtx.token ) {
+      const userTasks = taskData.filter(task => task.userId === userCtx.token)
+      console.log("userTasks", userTasks);
+      dispatch(addTasksToStore(userTasks));
     }
   }, [taskData, isError, isLoading, userCtx.token]);
-  console.log("taskData", taskData);
 
   return (
     <div>

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Dropdown from "../../components/Dropdown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postData, updateData } from "../../utils/api";
 import { useDispatch } from "react-redux";
 import { addTask, updateTask } from "../../store/reduxtookit/taskSlice";
+import UserContext from "../../store/user-context";
 
 const priorityOptions = [
   { value: "Low" },
@@ -31,6 +32,8 @@ const TaskForm = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
+  const userCtx = useContext(UserContext)
+
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
@@ -43,9 +46,16 @@ const TaskForm = () => {
       return;
     }
 
-    const { data: newTask } = await postData("/tasks/addTask", inputValues);
 
+    const data = {
+      ...inputValues,
+      userId : userCtx.token
+    }
+
+    const { data: newTask } = await postData("/tasks/addTask", data);
+    
     if (newTask) {
+      console.log(newTask)
       dispatch(addTask(newTask));
       navigate("/tasks");
     }
@@ -68,9 +78,13 @@ const TaskForm = () => {
   }, []);
 
   const updateTaskHandler = async () => {
+    const data = {
+      ...inputValues,
+      userId :userCtx.token
+    }
     const response = await updateData(
       `tasks/edit/${state?.task?._id}`,
-      inputValues
+      data
     );
 
     if (response) {

@@ -18,13 +18,14 @@ const getTasksFromDB = (cb) => {
 };
 
 class Tasks {
-  constructor(id, title, description, dueDate, priority, status) {
+  constructor(id, title, description, dueDate, priority, status, userId) {
     this._id = id;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.status = status;
+    this.userId = userId
   }
 
   save(res) {

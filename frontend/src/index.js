@@ -48,12 +48,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ContextProvider>
       <Provider store={store}>
+    <ContextProvider>
       <TaskProvider>
         <RouterProvider router={router} />
       </TaskProvider>
-      </Provider>
     </ContextProvider>
+      </Provider>
   </React.StrictMode>
 );

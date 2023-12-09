@@ -1,9 +1,12 @@
+import { useDispatch } from "react-redux";
 import UserContext from "./user-context";
 import React, { useEffect, useState } from "react";
+import { emptyTasks } from "./reduxtookit/taskSlice";
 
 const ContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const dispatch = useDispatch()
 
   // useEffect(() => {  
   //   console.log("users", users);
@@ -17,6 +20,7 @@ const ContextProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    dispatch(emptyTasks())
     setToken(null);
   };
 

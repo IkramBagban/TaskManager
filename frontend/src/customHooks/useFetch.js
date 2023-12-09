@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getData } from "../utils/api";
+import UserContext from "../store/user-context";
 
 const useFetch = (endpoint,forceRerender) => {
   const [dataState, setDataState] = useState({
@@ -7,6 +8,8 @@ const useFetch = (endpoint,forceRerender) => {
     isError: false,
     isLoading: true,
   });
+
+  const userCtx = useContext(UserContext)
   useEffect(() => {
     const fetchData = async () => {
       try {
