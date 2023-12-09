@@ -18,17 +18,20 @@ function Signup() {
 
     if (Object.values(input).some((val) => val.trim() === "")) {
       console.log("Please Provide Valid Email and password");
+      alert('Please Provide Valid Email and password')
       return;
     }
 
     if (existing) {
       console.log("User Already Exists");
+      alert('User Already Exists')
       return;
     }
 
     postData("/users/create", input).then((result) => {
       if (!result) {
         console.log("got error while creating user", result);
+        alert('got error while creating user')
         return;
       }
       console.log(

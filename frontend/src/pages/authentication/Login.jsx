@@ -19,6 +19,7 @@ function Login() {
 
     if (!existingUser) {
       const error = new Error("User Not Exist");
+      alert(error)
       console.error(error);
       return;
     }
@@ -26,6 +27,7 @@ function Login() {
     if (existingUser.password !== input.password) {
       const error = new Error("Wrong Password!");
       console.error(error);
+      alert(error)
       return;
     }
 
