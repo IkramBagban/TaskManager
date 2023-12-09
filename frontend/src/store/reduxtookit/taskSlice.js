@@ -7,10 +7,13 @@ const taskSlice = createSlice({
   },
   reducers: {
     addTasksToStore: (state, action) => {
-      state.tasks = action.payload;
+    // const tasks = action.payload
+    // console.log(tasks)
+    // if(action.payload && action.payload?.length <= 1) return;
+    if(action.payload) state.tasks = action.payload.reverse();
     },
     addTask: (state, action) => {
-      state.tasks.push(action.payload);
+      state.tasks.unshift(action.payload);
     },
     updateTask: (state, action) => {
       const { _id } = action.payload;
