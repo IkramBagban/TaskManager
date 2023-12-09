@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Dropdown from "../../components/Dropdown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postData, updateData } from "../../utils/api";
-import { TaskContext } from "../../store/TaskContext";
 import { useDispatch } from "react-redux";
 import { addTask, updateTask } from "../../store/reduxtookit/taskSlice";
 
@@ -20,7 +19,6 @@ const statusOptions = [
 ];
 
 const TaskForm = () => {
-  // const isEdit = true;
   const [inputValues, setInputValues] = useState({
     title: "",
     description: "",
@@ -30,15 +28,12 @@ const TaskForm = () => {
   });
   const dispatch = useDispatch();
 
-  const taskCtx = useContext(TaskContext);
   const navigate = useNavigate();
   const { state } = useLocation();
-  // const {isEditing, task} = state;
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
-    console.log(`${name} => ${value}`);
   };
 
   const addTaskHandler = async () => {
@@ -64,16 +59,12 @@ const TaskForm = () => {
     });
   };
 
+  // useEffect to fill existing task detail if editing.
   useEffect(() => {
-    if (!state?.isEditing) return;
+    if (!state?.isEditing) return; // if edit ni kar rahe to ye useEffect yahi per terminate hojayenga.
     const { title, description, dueDate, priority, status } = state?.task;
-    setInputValues({
-      title,
-      description,
-      dueDate,
-      priority,
-      status,
-    });
+    // if we click edit task. then the fields will fill with the existing task detail
+    setInputValues({ title, description, dueDate, priority, status });
   }, []);
 
   const updateTaskHandler = async () => {
@@ -81,21 +72,15 @@ const TaskForm = () => {
       `tasks/edit/${state?.task?._id}`,
       inputValues
     );
-    console.log("res", response);
+
     if (response) {
       navigate("/tasks");
-      // taskCtx.updateTask(response?.data);
       dispatch(updateTask(response?.data));
     }
   };
 
   const taskButtonHandler = () => {
-    if (state?.isEditing) {
-      updateTaskHandler(); // editing existing task
-      return;
-    }
-
-    addTaskHandler(); // create new task
+    state?.isEditing ? updateTaskHandler() : addTaskHandler();
   };
 
   return (
