@@ -1,9 +1,19 @@
 const fs = require("fs");
 const path = require("path");
 
-const usersDBPath = path.resolve(__dirname, "..", "database", "users.json");
+const port = process.env.PORT || 4000;
+let usersDBPath;
+
+if (port === 4000) {
+  usersDBPath = path.resolve(__dirname, "..", "database", "users.json");
+} else {
+  usersDBPath = path.resolve("/tmp", "users.json");
+}
 
 const getUsersFromDB = (cb) => {
+  if (!fs.existsSync(usersDBPath)) {
+    fs.writeFileSync(usersDBPath, "[]");
+  }
   fs.readFile(usersDBPath, "utf-8", (err, users) => {
     if (err) {
       cb([]);
@@ -35,7 +45,7 @@ class Users {
           return;
         }
 
-        users[userIndex] = {...this};
+        users[userIndex] = { ...this };
 
         fs.writeFile(usersDBPath, JSON.stringify(users), (err) => {
           if (err) {

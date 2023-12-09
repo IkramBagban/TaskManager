@@ -1,13 +1,28 @@
 const fs = require("fs");
 const path = require("path");
 
-const tasksDBPath = path.resolve(__dirname, "..", "database", "tasks.json");
+const port = process.env.PORT || 4000;
+
+let  tasksDBPath;
+
+if (port === 4000){
+
+  tasksDBPath = path.resolve(__dirname, "..", "database", "tasks.json");
+}else{
+  tasksDBPath = path.resolve('/tmp', 'tasks.json');
+}
+console.log(tasksDBPath)
+
 
 const getTasksFromDB = (cb) => {
+  if (!fs.existsSync(tasksDBPath)) {
+    fs.writeFileSync(tasksDBPath, '[]');
+  }
+
   fs.readFile(tasksDBPath, "utf-8", (err, data) => {
     if (err) {
-      const error = new Error(err);
-      console.error("got some error while fetching Data From the DB", error);
+      // const error = new Error(err);
+      // console.error("got some error while fetching Data From the DB", error);
       cb([]);
       return;
     }
