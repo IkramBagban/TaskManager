@@ -28,6 +28,12 @@ function Signup() {
       return;
     }
 
+    if (input.password !== input.confirmPassword){
+      console.log("Passwords do not match.");
+      alert('Passwords do not match.')
+      return;
+    }
+
     postData("/users/create", input).then((result) => {
       if (!result) {
         console.log("got error while creating user", result);
