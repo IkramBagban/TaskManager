@@ -1,19 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
+import React from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Task from "../../components/Task";
-import useFetch from "../../customHooks/useFetch";
-import { TaskContext } from "../../store/TaskContext";
-// import { useDispatch, useSelector } from "react-redux";
-// import { addTasksToStore } from "../../store/reduxtookit/taskSlice";
+import { useSelector } from "react-redux";
 
 const Tasks = () => {
   const navigate = useNavigate();
-  const [taskData, isLoading, isError] = useFetch("tasks");
-  const taskCtx = useContext(TaskContext);
-
-  useEffect(() => {
-    if (!isError) taskCtx.setTasksToStore(taskData);
-  }, [taskData, isError, isLoading,taskCtx]);
+  const tasks = useSelector(state => state.task.tasks)
 
   return (
     <div>
@@ -33,13 +25,13 @@ const Tasks = () => {
           alignItems: "center",
         }}
       >
-        {taskCtx.tasks?.map((task) => {
+        {tasks?.map((task) => {
           return (
             <Link
               style={{ width: "100%" }}
-              to={`tasks/${task._id}`}
+              to={`tasks/${task?._id}`}
               state={task}
-              key={task._id + Math.random()}
+              key={task?._id + Math.random()}
             >
               <Task task={task} />
             </Link>

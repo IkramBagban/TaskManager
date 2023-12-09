@@ -4,6 +4,8 @@ import Dropdown from "../../components/Dropdown";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postData, updateData } from "../../utils/api";
 import { TaskContext } from "../../store/TaskContext";
+import { useDispatch } from "react-redux";
+import { addTask, updateTask } from "../../store/reduxtookit/taskSlice";
 
 const priorityOptions = [
   { value: "Low" },
@@ -26,6 +28,7 @@ const TaskForm = () => {
     priority: "Low",
     status: "To-Do",
   });
+  const dispatch = useDispatch();
 
   const taskCtx = useContext(TaskContext);
   const navigate = useNavigate();
@@ -45,14 +48,12 @@ const TaskForm = () => {
       return;
     }
 
-    postData("/tasks/addTask", inputValues).then((newTask) => {
-      taskCtx.addTask(newTask);
-      navigate("/tasks");
-    });
+    const { data: newTask } = await postData("/tasks/addTask", inputValues);
 
-    //     if(newTask){
-    // console.log('under ',newTask)
-    //     }
+    if (newTask) {
+      dispatch(addTask(newTask));
+      navigate("/tasks");
+    }
 
     setInputValues({
       title: "",
@@ -83,7 +84,8 @@ const TaskForm = () => {
     console.log("res", response);
     if (response) {
       navigate("/tasks");
-      taskCtx.updateTask(response?.data);
+      // taskCtx.updateTask(response?.data);
+      dispatch(updateTask(response?.data));
     }
   };
 

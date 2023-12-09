@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getData } from "../utils/api";
 
-const useFetch = (endpoint) => {
+const useFetch = (endpoint,forceRerender) => {
   const [dataState, setDataState] = useState({
     data: null,
     isError: false,
@@ -20,7 +20,7 @@ const useFetch = (endpoint) => {
     fetchData();
   }, [endpoint]);
 
-  return [dataState.data, dataState.isLoading, dataState.isError];
+  return [dataState.data, dataState.isLoading, dataState.isError, !!forceRerender];
 };
 
 export default useFetch;

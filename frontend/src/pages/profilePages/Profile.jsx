@@ -7,7 +7,7 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const { state } = useLocation();
-  const taskCtx = useContext(TaskContext)
+  const taskCtx = useContext(TaskContext);
 
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -25,12 +25,11 @@ const Profile = () => {
   }, [state?.username, state?.phoneNumber, state?.email, state]);
 
   const editClickHandler = () => {
-  console.log('tasks ctx', taskCtx.tasks)
-  // console.log('tasks ctx'/)
+    console.log("tasks ctx", taskCtx.tasks);
+    // console.log('tasks ctx'/)
 
     navigate(`/profile/${token}`, { state: { user } });
   };
-
 
   return (
     <div>

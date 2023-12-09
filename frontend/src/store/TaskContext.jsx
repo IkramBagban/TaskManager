@@ -3,16 +3,16 @@ import { createContext, useState } from "react";
 export const TaskContext = createContext({
   tasks: [],
   setTasksToStore: (tasks) => {},
-  addTask : task =>{},
+  addTask : newTask =>{},
   updateTask : (updatedTask) => {},
 });
 
 export const TaskProvider = ({children}) =>{
-    const [tasks, setTasks] = useState();
+    const [tasks, setTasks] = useState([]);
 
-    const addTask = (task) => {
-        console.log('task has been added to store.',task)
-        setTasks(prev => [...prev, task])
+    const addTask = (newTask) => {
+        console.log('task has been added to store.',newTask)
+        setTasks(prev => [...prev, newTask])
     }
 
     const updateTask = (updatedTask)=>{
@@ -30,7 +30,7 @@ export const TaskProvider = ({children}) =>{
     }
 
     const value = {
-        tasks : tasks ,
+        tasks : tasks,
         setTasksToStore:setTasks,
         addTask : addTask,
         updateTask: updateTask
