@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import Login from "./Login";
-import Signup from "./Signup";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import {  useNavigate } from "react-router-dom";
 
 function Welcome() {
   const navigate = useNavigate();
