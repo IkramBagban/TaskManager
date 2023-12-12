@@ -1,0 +1,4008 @@
+{
+    "info": {
+      "_postman_id": "c74459fc-888e-49a2-8d78-bc67ec8ef8a1",
+      "name": "payroll-system-collection",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Signup",
+        "item": [
+          {
+            "name": "Signup user",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "text"
+                },
+                {
+                  "key": "rid",
+                  "value": "{{$guid}}",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"name\": \"Zishan Khan\",\r\n    \"email\": \"zishan_ansari2000@yahoo.com\",\r\n    \"cred\": \"Pass@12345\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/signup/create",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["signup", "create"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "onboarding-test",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDA4MDY1NDcsImlhdCI6MTY0MDc4ODU0N30.cFsgo9RoY5BHIcrqE4ODn4S56QnWGEVKZsYMKQ9AsgHr_t_LKWD7C9Wk4OX_jt5gVIHn7u4Y1mICgr68qmoG3g",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "text"
+                },
+                {
+                  "key": "rid",
+                  "value": "{{$guid}}",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"organizationName\": \"Mega soft\",\r\n    \"mobile\": \"998774909\",\r\n    \"industry\": \"Marketing\",\r\n    \"organizationSize\": \"20-30\",\r\n    \"monitorTimeAttendance\": true,\r\n    \"reviewHours\": true,\r\n    \"trackTime\": true,\r\n    \"isMobileApp\": true,\r\n    \"isSharedKiosk\": true,\r\n    \"isWeb\": true,\r\n    \"firstHear\": \"TV\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/signup/onboard",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["signup", "onboard"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Verification link",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/signup/verify/emlzaGFuX2Fuc2FyaTIwMDBAeWFob28uY29tfjE2NDI1MjUzNDY3ODA=",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": [
+                  "signup",
+                  "verify",
+                  "emlzaGFuX2Fuc2FyaTIwMDBAeWFob28uY29tfjE2NDI1MjUzNDY3ODA="
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Invite-Member",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDEwMzUwOTksImlhdCI6MTY0MTAxNzA5OX0.CeV-qMGWRZDYKJT6LN0OzgQhleDxoUX8LD9kpiKhbNV17zby3_8g72CxNiVV47vJamXdVASKLhKwtENbypWBHA",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"name\": \"Zishan Ansari\",\r\n    \"email\": \"zshanraza12@gmail.com\",\r\n    \"mobile\": \"9987774909\",\r\n    \"isEmailInvite\": true,\r\n    \"isMobileInvite\": true\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/signup/invite",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["signup", "invite"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Invite-member-token-process",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/signup/invite/ver/enNoYW5yYXphMTJAZ21haWwuY29tfjE2NDEyMDkxNjc5MDR+Mw==",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": [
+                  "signup",
+                  "invite",
+                  "ver",
+                  "enNoYW5yYXphMTJAZ21haWwuY29tfjE2NDEyMDkxNjc5MDR+Mw=="
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "onboard-member",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "default"
+                },
+                {
+                  "key": "invite",
+                  "value": "enNoYW5yYXphMTJAZ21haWwuY29tfjE2NDI1MjcyNzIzNTd+NX4xMQ==",
+                  "type": "default"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"cred\":\"ABC@123\"\r\n}"
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/signup/onboard/member",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["signup", "onboard", "member"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Resend-email-to-invite-member",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5MjM5NjMsImlhdCI6MTY0NDkwNTk2M30.HKsYDtuMhGq8xHaBWy61G6bEcjxOV1OsWyArvcvvUC3JXHIilzhiAhy6EzObbkVe-A_5Yl0xHBUbm1rOILGMvQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/signup/invite/resend/zishanroyal2021@gmail.com",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": [
+                  "signup",
+                  "invite",
+                  "resend",
+                  "zishanroyal2021@gmail.com"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get-invite-member-list",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5MjM5NjMsImlhdCI6MTY0NDkwNTk2M30.HKsYDtuMhGq8xHaBWy61G6bEcjxOV1OsWyArvcvvUC3JXHIilzhiAhy6EzObbkVe-A_5Yl0xHBUbm1rOILGMvQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/signup/invite/get",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["signup", "invite", "get"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "master",
+        "item": [
+          {
+            "name": "MasterLoader",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDA4MDY2MDksImlhdCI6MTY0MDc4ODYwOX0._WUN40ZqkSdFAROYZflip0R_UD9l4rqA__oWCAFbYvV3tkSEs9hX_cLlDikEv4zB-_fhhy8aNkRjZxaR9hc1cg",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "text"
+                },
+                {
+                  "key": "rid",
+                  "value": "{{$guid}}",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "http://payroll.aws:8080/master/get/industry",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["master", "get", "industry"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Country-Master",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/master/country",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["master", "country"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Currency-Master",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/master/currency",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["master", "currency"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Timezone-master",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/master/currency",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["master", "currency"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Authentication",
+        "item": [
+          {
+            "name": "Authentication",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                },
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "text"
+                },
+                {
+                  "key": "rid",
+                  "value": "{{$guid}}",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"username\": \"zishan_ansari2000@yahoo.com\",\r\n    \"password\": \"Pass@12345\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/auth/authenticate",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["auth", "authenticate"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "userProfile",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDA4MDY2MDksImlhdCI6MTY0MDc4ODYwOX0._WUN40ZqkSdFAROYZflip0R_UD9l4rqA__oWCAFbYvV3tkSEs9hX_cLlDikEv4zB-_fhhy8aNkRjZxaR9hc1cg",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "text"
+                },
+                {
+                  "key": "rid",
+                  "value": "{{$guid}}",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "http://payroll.aws:8080/user/profile",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["user", "profile"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "SignUp-Authentication",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "text"
+                },
+                {
+                  "key": "rid",
+                  "value": "{{$guid}}",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"username\": \"zishan_ansari2000@yahoo.com\",\r\n    \"password\": \"Pass@12345\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/auth/signup",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["auth", "signup"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Logout",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "rid",
+                  "value": "123",
+                  "type": "default"
+                },
+                {
+                  "key": "ch",
+                  "value": "web",
+                  "type": "default"
+                }
+              ],
+              "url": {
+                "raw": "http://localhost:8080/auth/logout",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["auth", "logout"],
+                "query": [
+                  {
+                    "key": "rid",
+                    "value": "123",
+                    "disabled": true
+                  },
+                  {
+                    "key": "ch",
+                    "value": "web",
+                    "disabled": true
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "userProfile-By-Id",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5NTg5MTcsImlhdCI6MTY0NDk0MDkxN30.lHDiR-7IXbzXTzooNERs2osQd2HcqwTPl5VSWg-oR0yVB685RPA54T3jJBV9c6olWvReONBt-aPpH-79JUSUPQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/user/profile/get/68",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["user", "profile", "get", "68"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "user-role-list",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjU2MTcyOTE2LCJpYXQiOjE2NTYxNTQ5MTZ9.yP-Ji1JcuWKcwdsB30nw4F36ZXeBiJwhlvXbjVIGJBLYwDWbMJpngD8opJlW_-BcoZvV2to-q-ZCKr21w5VjOA",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/roles",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "roles"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "get-archive-member-list",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjU1NjUzNDI4LCJpYXQiOjE2NTU2MzU0Mjh9.jhQJ7L2KTk3fo99UnEvoSrw7ldv0y3f6LzNoIX8kXoIDIN9rLknErFtKNaawnfTXVGJLx-Pg7hXEhRmnD-oCAw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/archive/members",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "archive", "members"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "restore-member",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjU1NjUzNDI4LCJpYXQiOjE2NTU2MzU0Mjh9.jhQJ7L2KTk3fo99UnEvoSrw7ldv0y3f6LzNoIX8kXoIDIN9rLknErFtKNaawnfTXVGJLx-Pg7hXEhRmnD-oCAw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\": \"restore\",\r\n    \"id\": \"11\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/ops",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "ops"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Archive-member",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjU1NjUzNDI4LCJpYXQiOjE2NTU2MzU0Mjh9.jhQJ7L2KTk3fo99UnEvoSrw7ldv0y3f6LzNoIX8kXoIDIN9rLknErFtKNaawnfTXVGJLx-Pg7hXEhRmnD-oCAw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\": \"archive\",\r\n    \"id\": \"11\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/ops",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "ops"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update-user-role",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjU2ODgzMzIwLCJpYXQiOjE2NTY4NjUzMjB9.-Tp8wZKDhwpLh1wsj3El2O1O-hNykewvHc6N4W4nNwySpwYy-pCKd96YHz9w3Ha7t9nCswGS8zdXkC75X3PUkw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"id\": 112,\r\n    \"role\": \"PY_MANAGER\",\r\n    \"roleId\": 201\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/update/role",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "update", "role"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "change-password",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"oldPassword\":\"ABC@12345\",\r\n    \"newPassword\":\"Pass@12345\",\r\n    \"confirmPassword\":\"Pass@12345\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/change/pwd",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "change", "pwd"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Forget-password-requester",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/forget/request/zishan123@yahoo.com",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["forget", "request", "zishan123@yahoo.com"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "forget-password-change",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"otp\":\"\",\r\n    \"newPassword\":\"\",\r\n    \"confirmPassword\":\"\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/forget/change/pwd",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["forget", "change", "pwd"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "user-profile-update",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"name\":\"\",\r\n    \"preferredName\":\"\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/profile/update",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "profile", "update"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "get-date-time-data",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/profile/datetime",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "profile", "datetime"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update-date-time-details",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"timezoneId\":1,\r\n    \"timesheetTimeZoneId\":1,\r\n    \"durationType\":\"XXh YYm (2h 3m)\",\r\n    \"timeFormat\":\"12-hour clock (am/pm) (09:30 pm)\",\r\n    \"geoRadiusType\":\"Feet\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/profile/update/datetime",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "profile", "update", "datetime"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Attendance",
+        "item": [
+          {
+            "name": "Manager Copy",
+            "item": [
+              {
+                "name": "Clock-in",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [
+                    {
+                      "key": "userid",
+                      "value": "UASDF",
+                      "type": "default",
+                      "disabled": true
+                    }
+                  ],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"LI\",\r\n    \"remark\": \"Clock in\",\r\n    \"activity\": 496,\r\n    \"project\": 494\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Break-in",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"BS\",\r\n    \"remark\": \"Break start\",\r\n    \"activity\": 117,\r\n    \"project\": 115\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Break-out",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"BE\",\r\n    \"remark\": \"Break end\",\r\n    \"activity\": 117,\r\n    \"project\": 115\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Clock-out",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"LO\",\r\n    \"remark\": \"Logout\",\r\n    \"activity\": 117,\r\n    \"project\": 115\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Employee-Clock-in",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"LI\",\r\n    \"remark\": \"Clock in\",\r\n    \"mapId\": 440,\r\n    \"clockingDate\": \"1675049400\",\r\n    \"activity\": 496,\r\n    \"project\": 494\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Employee-Break-in",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"BS\",\r\n    \"remark\": \"Break start\",\r\n    \"mapId\": 440,\r\n    \"clockingDate\": \"1675051200\",\r\n    \"activity\": 496,\r\n    \"project\": 494\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Employee-Break-out",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"BE\",\r\n    \"remark\": \"Break end\",\r\n    \"mapId\": 440,\r\n    \"clockingDate\": \"1675053000\",\r\n    \"activity\": 496,\r\n    \"project\": 494\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Employee-Clock-out",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"LO\",\r\n    \"remark\": \"Logout\",\r\n    \"mapId\": 440,\r\n    \"clockingDate\": \"1675114200\",\r\n    \"activity\": 496,\r\n    \"project\": 494\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Report-Timesheet-Daily",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"action\": \"d\",\r\n    \"startDate\": \"2022-10-07\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/report",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "report"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Report-Timesheet-By-Date-between",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"action\": \"m\",\r\n    \"startDate\": \"2022-09-25\",\r\n    \"endDate\": \"2022-10-03\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/report",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "report"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Attendance-history",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/history/2022-10-02",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "history", "2022-10-02"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Manager-Attendance-history",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [
+                    {
+                      "key": "mapid",
+                      "value": "",
+                      "type": "default",
+                      "disabled": true
+                    }
+                  ],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"startDate\": \"2022-01-07\",\r\n    \"mapId\": 8\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/history",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "history"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Test-Report",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDA4OTg0MzQsImlhdCI6MTY0MDg4MDQzNH0.TRx0qVImGUYOTaHsyxvPN405MtUwn95vmXdocly98M5BpbVnHy6ohADQCNfkQZ2ED_KX_YtmArBmz0pP7PLhlg",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/test",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "test"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Generate-Report",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"fileType\": \"xls\",\r\n    \"isTimesheet\": true,\r\n    \"isTimeEntries\": true,\r\n    \"dateRange\": \"WEEK\",\r\n    \"startDate\": \"2022-10-07\",\r\n    \"endDate\":\"2022-10-15\",\r\n    \"filterBy\": null,\r\n    \"timeFormat\": null,\r\n    \"duration\": null\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/generate",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "generate"]
+                  }
+                },
+                "response": []
+              }
+            ]
+          },
+          {
+            "name": "Employee Copy",
+            "item": [
+              {
+                "name": "Clock-in",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [
+                    {
+                      "key": "userid",
+                      "value": "UASDF",
+                      "type": "default",
+                      "disabled": true
+                    }
+                  ],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"LI\",\r\n    \"remark\": \"Clock in\",\r\n    \"activity\": 496,\r\n    \"project\": 494\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Break-in",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"BS\",\r\n    \"remark\": \"Break start\",\r\n    \"activity\": 117,\r\n    \"project\": 115\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Break-out",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"BE\",\r\n    \"remark\": \"Break end\",\r\n    \"activity\": 117,\r\n    \"project\": 115\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Clock-out",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"LO\",\r\n    \"remark\": \"Logout\",\r\n    \"activity\": 117,\r\n    \"project\": 115\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/au",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "au"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Report-Timesheet-Daily",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"action\": \"d\",\r\n    \"startDate\": \"2022-10-07\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/report",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "report"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Report-Timesheet-By-Date-between",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"action\": \"m\",\r\n    \"startDate\": \"2022-09-25\",\r\n    \"endDate\": \"2022-10-03\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/report",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "report"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Attendance-history",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/history/2022-10-02",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "history", "2022-10-02"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "Generate-Report",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{token}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"fileType\": \"xls\",\r\n    \"isTimesheet\": true,\r\n    \"isTimeEntries\": true,\r\n    \"dateRange\": \"WEEK\",\r\n    \"startDate\": \"2022-10-07\",\r\n    \"endDate\":\"2022-10-15\",\r\n    \"filterBy\": null,\r\n    \"timeFormat\": null,\r\n    \"duration\": null\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/attendance/generate",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["attendance", "generate"]
+                  }
+                },
+                "response": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Group",
+        "item": [
+          {
+            "name": "Create-group",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5NTg5MTcsImlhdCI6MTY0NDk0MDkxN30.lHDiR-7IXbzXTzooNERs2osQd2HcqwTPl5VSWg-oR0yVB685RPA54T3jJBV9c6olWvReONBt-aPpH-79JUSUPQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"groupName\": \"Ecommenerce\",\r\n    \"managers\": [\r\n        {\r\n            \"id\": 68,\r\n            \"name\": \"ABC\"\r\n        }\r\n    ],\r\n    \"members\": [\r\n        {\r\n            \"id\": 68,\r\n            \"name\": \"XYZ\"\r\n        }\r\n    ]\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/group/create",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["group", "create"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Fetch-group-list",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5NTg5MTcsImlhdCI6MTY0NDk0MDkxN30.lHDiR-7IXbzXTzooNERs2osQd2HcqwTPl5VSWg-oR0yVB685RPA54T3jJBV9c6olWvReONBt-aPpH-79JUSUPQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/group/get/all",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["group", "get", "all"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Fetch-member-list-by-group-name",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5NTg5MTcsImlhdCI6MTY0NDk0MDkxN30.lHDiR-7IXbzXTzooNERs2osQd2HcqwTPl5VSWg-oR0yVB685RPA54T3jJBV9c6olWvReONBt-aPpH-79JUSUPQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/group/get/Ecommenerce",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["group", "get", "Ecommenerce"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Delete-group-by-group-name",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ3ODc1NjAyLCJpYXQiOjE2NDc4NTc2MDJ9.OSLY-SZGCz4z1HrcQ_ZU-jJrUrS3RPILwNMQ1rJ4geX4zx5-un5hM7NCc2gBbZtfWpWEa_C7ANiOsSw-rA0Isw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"name\":\"Teachers\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/group/operations",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["group", "operations"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update -group-member",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ3ODk4OTUxLCJpYXQiOjE2NDc4ODA5NTF9.cTJbINhlcU8DUUSeguwSOJHNIhLfbDXy3I8fzWiTnhPUQXP9YuFBvW2uysHqx2-bfMU5Rye-rKjUzfG9xhAndQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"groupName\": \"Teachers\",\r\n    \"managers\": [\r\n        {\r\n            \"id\": 31,\r\n            \"name\": \"Altaf\"\r\n        }\r\n    ],\r\n    \"members\": [\r\n        {\r\n            \"id\": 32,\r\n            \"name\": \"John\"\r\n        }\r\n    ],\r\n    \"deleteMembers\": [\r\n        {\r\n            \"id\": 66,\r\n            \"name\": \"Areeb\"\r\n        }\r\n    ]\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/group/update",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["group", "update"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Coomon-API",
+        "item": [
+          {
+            "name": "Search-Member",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQ5NTg5MTcsImlhdCI6MTY0NDk0MDkxN30.lHDiR-7IXbzXTzooNERs2osQd2HcqwTPl5VSWg-oR0yVB685RPA54T3jJBV9c6olWvReONBt-aPpH-79JUSUPQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"name\",\r\n    \"name\":\"Ahm\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/search",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["search"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Search-Member-ALL",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5fYW5zYXJpMjAwMEB5YWhvby5jb20iLCJleHAiOjE2NDQwMTg4NjksImlhdCI6MTY0NDAwMDg2OX0.foBt4TRKf0RbIyV-q66_pjQJriAXwiIEUszldvjbz42LIa8CLp-VOJ0ch3ZD7ONeuLglEbu1dBuVyrgpxt4WGA",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"all\",\r\n    \"name\":\"\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/search",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["search"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Search-Project-ALL",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"project\",\r\n    \"name\":\"\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/search",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["search"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Search-Client-ALL",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"client\",\r\n    \"name\":\"\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/search",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["search"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "organization-details",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/org",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "org"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update-organization-details",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"organizationName\": \"Aims soft\",\r\n    \"country\": \"INDIA\",\r\n    \"startWeekOn\": \"MONDAY\",\r\n    \"startMonth\": \"JANUARY\",\r\n    \"timeFormat\": \"12-hour clock (am/pm) (09:30 pm)\",\r\n    \"timeZone\": \"(GMT+5:30) Mumbai, Delhi, Bengaluru\",\r\n    \"duration\": \"XXh YYm (2h 10m)\",\r\n    \"currency\": \"Indian Rupee (INR)\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/org/update",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "org", "update"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Location",
+        "item": [
+          {
+            "name": "add-office-location",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ3OTgwMjU0LCJpYXQiOjE2NDc5NjIyNTR9.0uvkJzRj7ty9TYAZWVfAuoRWLpzGImNj9OLrF0GGtNap2Tjhfv0fr9XOOS0-A8eIyJD_lNzxyQxoNUguGhbxSQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"name\": \"RoyalEnt\",\r\n    \"address\": \"Roshan khan mohalla\",\r\n    \"city\": \"Parbhani\",\r\n    \"state\": \"Maharashtra\",\r\n    \"country\": \"INDIA\",\r\n    \"latitude\": 19.260996,\r\n    \"longitude\": 76.776665\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/location/add",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "add"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "get-All-location-created-by-me",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/location/get",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "get"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update-office-location",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ3OTgwMjU0LCJpYXQiOjE2NDc5NjIyNTR9.0uvkJzRj7ty9TYAZWVfAuoRWLpzGImNj9OLrF0GGtNap2Tjhfv0fr9XOOS0-A8eIyJD_lNzxyQxoNUguGhbxSQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"id\": 57,\r\n    \"name\": \"RoyalEnt\",\r\n    \"address\": \"Roshan khan mohalla\",\r\n    \"city\": \"Parbhani\",\r\n    \"state\": \"Maharashtra\",\r\n    \"country\": \"INDIA\",\r\n    \"latitude\": 20.260996,\r\n    \"longitude\": 80.776665\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/location/update",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "update"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "map-user-location",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ4MTQwNDE3LCJpYXQiOjE2NDgxMjI0MTd9.erue-RwvfN65JZoghvDXhwIJlJkzEsH4tRGO7fWEEmBDwqVU4t7P0eUZ2ng_UdNPQRS7wPdeFCDi_zU5Pbo1lA",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"mappedId\": 11,\r\n    \"locationId\": 57\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/location/map",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "map"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "remove-user-location-mapping",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ3OTgwMjU0LCJpYXQiOjE2NDc5NjIyNTR9.0uvkJzRj7ty9TYAZWVfAuoRWLpzGImNj9OLrF0GGtNap2Tjhfv0fr9XOOS0-A8eIyJD_lNzxyQxoNUguGhbxSQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"id\": locationId\r\n   \r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/location/remove",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "remove"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "get-All-location-By-ID",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjQ5ODgxMjk5LCJpYXQiOjE2NDk4NjMyOTl9.jUP2oIalN7z6QGAptCDXpeaWva7N6ncN5srERASDnEBHflE_JPfNWd7xvR8bnMswIIT2JyvLi-9aOsCHt9heYw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/location/get/57",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "get", "57"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-user-live-location",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "[\r\n    {\r\n        \"latitude\": 35.260996,\r\n        \"longitude\": 70.776665,\r\n        \"epocTime\": \"1668868386\"\r\n    }\r\n]",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/location/live/add",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "live", "add"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "get-user-live-location",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/location/live/get",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "live", "get"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "get-user-live-location-by-id",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/location/live/get/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["location", "live", "get", "1"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Calender",
+        "item": [
+          {
+            "name": "Calender-load",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYwNTY0OTAxLCJpYXQiOjE2NjA1NDY5MDF9.53CQOWvqhokqH2hfySGH9S7Zd2GXLVBfX2E32xd9Xn9sRgJAx2_W0bHHENehMCPArN9pCFKfqKGLBXfvmiQY_A",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"calenderName\": \"IND Special\",\r\n    \"isDefault\": false,\r\n    \"isManual\": false,\r\n    \"countryCode\": \"in\",\r\n    \"userIds\": [\r\n        8,14\r\n    ]\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/calendar/get",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "get"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Calender-load-Not-a-default",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYxMDkwNzUwLCJpYXQiOjE2NjEwNzI3NTB9.yPWZd1Opn6GjPaoGFj-0EmhuET3zn1ZB0VMboNl0XViiZ3PsuWLIhV6u2Koagh9_I2ip3jZvO9tLVkSwbtzVxQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"calenderName\": \"Maharashtra-emp\",\r\n    \"isDefault\": false,\r\n    \"isManual\": false,\r\n    \"countryCode\": \"in\",\r\n    \"userIds\": [\r\n        8,14\r\n    ]\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/calendar/get",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "get"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Calender-List",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYwNjAxMjU1LCJpYXQiOjE2NjA1ODMyNTV9.yANyfDoRN24pjosIUszTepc3vnqyQ3te036TJJHBPPBTDhJ1rSGeU4OZJrAV9DUglp8B4HPR4AX3WMkcjHUvvw",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/calendar/list",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "list"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Calender-By-Id",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYwNTY0OTAxLCJpYXQiOjE2NjA1NDY5MDF9.53CQOWvqhokqH2hfySGH9S7Zd2GXLVBfX2E32xd9Xn9sRgJAx2_W0bHHENehMCPArN9pCFKfqKGLBXfvmiQY_A",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/calendar/get/cal/225",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "get", "cal", "225"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Remove-holidays",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYxMDkwNzUwLCJpYXQiOjE2NjEwNzI3NTB9.yPWZd1Opn6GjPaoGFj-0EmhuET3zn1ZB0VMboNl0XViiZ3PsuWLIhV6u2Koagh9_I2ip3jZvO9tLVkSwbtzVxQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"id\":140,\r\n    \"calenderId\":236,\r\n    \"isActiveHoliday\":false\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/calendar/ops",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "ops"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Add-holidays",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYxMDkwNzUwLCJpYXQiOjE2NjEwNzI3NTB9.yPWZd1Opn6GjPaoGFj-0EmhuET3zn1ZB0VMboNl0XViiZ3PsuWLIhV6u2Koagh9_I2ip3jZvO9tLVkSwbtzVxQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"id\":null,\r\n    \"calenderId\":236,\r\n    \"startDate\":1669836600,\r\n    \"endDate\":null,\r\n    \"holidayText\":\"My BirthDay\",\r\n    \"countryCode\":\"in\",\r\n    \"countryName\":\"INDIA\",\r\n    \"type\":\"Local\",\r\n    \"isActiveHoliday\":true\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/calendar/ops",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "ops"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Edit-holidays",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW4xMjNAeWFob28uY29tIiwiZXhwIjoxNjYxMDkwNzUwLCJpYXQiOjE2NjEwNzI3NTB9.yPWZd1Opn6GjPaoGFj-0EmhuET3zn1ZB0VMboNl0XViiZ3PsuWLIhV6u2Koagh9_I2ip3jZvO9tLVkSwbtzVxQ",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"id\":null,\r\n    \"calenderId\":236,\r\n    \"startDate\":1669836600,\r\n    \"endDate\":null,\r\n    \"holidayText\":\"My BirthDay\",\r\n    \"countryCode\":\"in\",\r\n    \"countryName\":\"INDIA\",\r\n    \"type\":\"Local\",\r\n    \"isActiveHoliday\":true\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/calendar/ops",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["calendar", "ops"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Project-And-Activity",
+        "item": [
+          {
+            "name": "Client",
+            "item": [
+              {
+                "name": "add-client-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\":\"\",\r\n    \"code\":\"\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/add/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "add", "client"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-client-list",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/all/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "all", "client"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-client-by-id",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/client/70",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "client", "70"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-archive-client-list",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/archive/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "archive", "client"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "update-client-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"update\",\r\n    \"id\":\"70\",\r\n    \"name\":\"Hasan Khan\",\r\n    \"code\":\"RY001\"\r\n\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "client"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "archive-client-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"archive\",\r\n    \"id\":\"70\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "client"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "restore-from-archive-client-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"restore\",\r\n    \"id\":\"70\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "client"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "delete-client-details-by-id",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxMzIwNDA5LCJpYXQiOjE2NTEzMDI0MDl9.73qhVjFVHMUms4j2nFG1IO_dPbXsYMPtsxu66ZJFiESF3DTp2xtoZPkcw5E_OwAadm51MKX4s2u9GoeZqLa7Xw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"delete\",\r\n    \"id\":\"70\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/client",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "client"]
+                  }
+                },
+                "response": []
+              }
+            ]
+          },
+          {
+            "name": "Project",
+            "item": [
+              {
+                "name": "add-project-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\": \"NCS service\",\r\n    \"code\": \"HR007\",\r\n    \"clientId\": 71,\r\n    \"description\": \"This project is for NCS service\",\r\n    \"locationId\": 65,\r\n    \"assignees\": [\r\n        {\r\n            \"id\": 31,\r\n            \"isGroup\": false\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"isGroup\": true\r\n        }\r\n    ]\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/add/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "add", "project"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-project-list",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/all/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "all", "project"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-project-by-id",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/project/77",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "project", "77"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-archive-project-list",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxNDEzMzE4LCJpYXQiOjE2NTEzOTUzMTh9.yqoIE6UGqnwmjizSqdxWk8ErGE_wYfWv3d7mYd08bngxhvoUAFRephBm8wO2W-JA05dp7DzVIdtyrodku4xdyw",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/archive/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "archive", "project"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "update-project-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"update\",\r\n    \"id\": \"84\",\r\n    \"name\": \"Medical Service\",\r\n    \"code\": \"HR006\",\r\n    \"clientId\": 71,\r\n    \"description\": \"This project is for medical management\",\r\n    \"locationId\": 57,\r\n    \"assignees\": [\r\n        {\r\n            \"id\": 11,\r\n            \"isGroup\": false\r\n        },\r\n        {\r\n            \"id\": 52,\r\n            \"isGroup\": true\r\n        }\r\n        \r\n    ]\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "project"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "archive-project-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"archive\",\r\n    \"id\":\"78\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "project"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "restore-from-archive-project",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"restore\",\r\n    \"id\":\"78\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "project"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "delete-project-details-by-id",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUxOTQyOTYzLCJpYXQiOjE2NTE5MjQ5NjN9.AaO0erXJsNPWnJ2siu1B1kyQQtsgvjKE0pvycclQTWIr01WgqtIEMu4zqF0gWiGhfVW921G08a-nVI-uN120uQ",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"delete\",\r\n    \"id\":\"75\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/project",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "project"]
+                  }
+                },
+                "response": []
+              }
+            ]
+          },
+          {
+            "name": "Activity",
+            "item": [
+              {
+                "name": "add-activity-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\":\"Development\",\r\n    \"code\":\"ACT01\",\r\n    \"color\":\"GREEN\",\r\n    \"description\":\"Software Development activity\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/add/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "add", "activity"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-activity-list",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/all/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "all", "activity"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-activity-by-id",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/activity/70",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "activity", "70"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "get-archive-activity-list",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/archive/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "archive", "activity"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "update-activity-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\": \"update\",\r\n    \"id\": \"102\",\r\n    \"name\":\"Designing\",\r\n    \"code\": \"ACT02\",\r\n    \"color\": \"BLUE\",\r\n    \"description\": \"Edit Software designing activity\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "activity"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "archive-activity-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"archive\",\r\n    \"id\":\"102\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "activity"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "restore-from-archive-activity-details",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"restore\",\r\n    \"id\":\"102\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "activity"]
+                  }
+                },
+                "response": []
+              },
+              {
+                "name": "delete-activity-details-by-id",
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXNoYW5AeWFob28uY29tIiwiZXhwIjoxNjUyOTY1MTUzLCJpYXQiOjE2NTI5NDcxNTN9.afudRO70a78bge7K2c-GKdAy_CERbUVS57VJhCvbT86GzgEdixIWpFd3iNuOXfGWpUIrAtRzSi_aB8S94t18PA",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"type\":\"delete\",\r\n    \"id\":\"102\"\r\n \r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "http://localhost:8080/prjactivity/opt/activity",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["prjactivity", "opt", "activity"]
+                  }
+                },
+                "response": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Facial-Recognition",
+        "item": [
+          {
+            "name": "add-update-user-facial-recognition",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"text\":\"Shows how to use Windows.Media.Ocr API. Optical character recognition (OCR) API allows for application developer to extract text in the specific language from an image.Note: This sample is part of a large collection of UWP feature samples. You can download this sample as a standalone ZIP file from docs.microsoft.com, or you can download the entire collection as a single ZIP file, but be sure to unzip everything to access shared dependencies. For more info on working with the ZIP file, the samples collection, and GitHub, see Get the UWP samples from GitHub. For more samples, see the Samples portal on the Windows Dev Center.This sample covers:Scenario 1: Load image from a file and extract text in user specified language.Shows how to use Windows.Media.Ocr API. Optical character recognition (OCR) API allows for application developer to extract text in the specific language from an image.Note: This sample is part of a large collection of UWP feature samples. You can download this sample as a standalone ZIP file from docs.microsoft.com, or you can download the entire collection as a single ZIP file, but be sure to unzip everything to access shared dependencies. For more info on working with the ZIP file, the samples collection, and GitHub, see Get the UWP samples from GitHub. For more samples, see the Samples portal on the Windows Dev Center.This sample covers:Scenario 1: Load image from a file and extract text in user specified language.Shows how to use Windows.Media.Ocr API. Optical character recognition (OCR) API allows for application developer to extract text in the specific language from an image.Note: This sample is part of a large collection of UWP feature samples. You can download this sample as a standalone ZIP file from docs.microsoft.com, or you can download the entire collection as a single ZIP file, but be sure to unzip everything to access shared dependencies. For more info on working with the ZIP file, the samples collection, and GitHub, see Get the UWP samples from GitHub. For more samples, see the Samples portal on the Windows Dev Center.This sample covers:Scenario 1: Load image from a file and extract text in user specified language.Shows how to use Windows.Media.Ocr API. Optical character recognition (OCR) API allows for application developer to extract text in the specific language from an image.Note: This sample is part of a large collection of UWP feature samples. You can download this sample as a standalone ZIP file from docs.microsoft.com, or you can download the entire collection as a single ZIP file, but be sure to unzip everything to access shared dependencies. For more info on working with the ZIP file, the samples collection, and GitHub, see Get the UWP samples from GitHub. For more samples, see the Samples portal on the Windows Dev Center.This sample covers:Scenario 1: Load image from a file and extract text in user specified language.Shows how to use Windows.Media.Ocr API. Optical character recognition (OCR) API allows for application developer to extract text in the specific language from an image.Note: This sample is part of a large collection of UWP feature samples. You can download this sample as a standalone ZIP file from docs.microsoft.com, or you can download the entire collection as a single ZIP file, but be sure to unzip everything to access shared dependencies. For more info on working with the ZIP file, the samples collection, and GitHub, see Get the UWP samples from GitHub. For more samples, see the Samples portal on the Windows Dev Center.This sample covers:Scenario 1: Load image from a file and extract text in user specified language.Shows how to use Windows.Media.Ocr API. Optical character recognition (OCR) API allows for application developer to extract text in the specific language from an image.Note: This sample is part of a large collection of UWP feature samples. You can download this sample as a standalone ZIP file from docs.microsoft.com, or you can download the entire collection as a single ZIP file, but be sure to unzip everything to access shared dependencies. For more info on working with the ZIP file, the samples collection, and GitHub, see Get the UWP samples from GitHub. For more samples, see the Samples portal on the Windows Dev Center.This sample covers:Scenario 1: Load image from a file and extract text in user specified language.\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/user/facial/recog/add",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "facial", "recog", "add"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get-facial-details",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/facial/get",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "facial", "get"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get-facial-details-by-map-id",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/facial/get/14",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "facial", "get", "14"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Subscription",
+        "item": [
+          {
+            "name": "Get-Plans",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/subscription/plans",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["subscription", "plans"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get-Subscription-details",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://payroll.aws:8080/subscription/details",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["subscription", "details"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update-subscription-plan",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"planId\":421,\r\n    \"billingCycle\":\"month\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/subscription/change",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["subscription", "change"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-billing-info",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"billingFirstName\": \"Altaf\",\r\n    \"billingLastName\": \"Hussain\",\r\n    \"billingEmail\": \"altaf@yahoo.com\",\r\n    \"billingMobile\": \"9890123456\",\r\n    \"billingAddress1\": \"SSS building\",\r\n    \"billingAddress2\": \"roshan khan\",\r\n    \"billingCity\": \"Parbhani\",\r\n    \"billingZip\": 431401,\r\n    \"billingState\": \"Maharashtra\",\r\n    \"billingCountry\": \"INDIA\",\r\n    \"vatNumber\": \"CA09999999YY\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://payroll.aws:8080/subscription/add/billing",
+                "protocol": "http",
+                "host": ["payroll", "aws"],
+                "port": "8080",
+                "path": ["subscription", "add", "billing"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "WorkSchedule-And-TimeTracking Copy",
+        "item": [
+          {
+            "name": "add-work-schedule",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"scheduleName\": \"JP2-PAN\",\r\n    \"workArrangement\": \"FIXED\",\r\n    \"days\": [\r\n        {\r\n            \"days\": \"MONDAY\",\r\n            \"timeIn\": \"1664701200\",\r\n            \"timeOut\": \"1664730000\"\r\n        },\r\n        {\r\n            \"days\": \"TUESDAY\",\r\n            \"timeIn\": \"1664701200\",\r\n            \"timeOut\": \"1664730000\"\r\n        },\r\n        {\r\n            \"days\": \"WEDNESDAY\",\r\n            \"timeIn\": \"1664701200\",\r\n            \"timeOut\": \"1664730000\"\r\n        },\r\n        {\r\n            \"days\": \"THURSDAY\",\r\n            \"timeIn\": \"1664701200\",\r\n            \"timeOut\": \"1664730000\"\r\n        },\r\n        {\r\n            \"days\": \"FRIDAY\",\r\n            \"timeIn\": \"1664701200\",\r\n            \"timeOut\": \"1664730000\"\r\n        }\r\n    ],\r\n    \"payHours\": false,\r\n    \"assignees\": [\r\n        {\r\n            \"id\": 54,\r\n            \"isGroup\": true\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"isGroup\": false\r\n        }\r\n    ],\r\n    \"breaks\": [\r\n        {\r\n            \"breakName\": \"Lunch-Time\",\r\n            \"totalHours\": 1,\r\n            \"timeIn\": \"1664701200\",\r\n            \"timeOut\": \"1664730000\",\r\n            \"payType\": \"PAID\"\r\n        }\r\n    ],\r\n    \"deductions\": [\r\n        {\r\n            \"deductionName\": \"breaks-deduction\",\r\n            \"hours\": 2.5,\r\n            \"thresholdTime\": 8.0\r\n        }\r\n    ],\r\n    \"rules\": [\r\n        {\r\n            \"type\": \"Daily Overtime\",\r\n            \"overTimeStart\": 8.30,\r\n            \"multiplier\": 1.50\r\n        },\r\n        {\r\n            \"type\": \"Daily Double Overtime\",\r\n            \"overTimeStart\": 10.30,\r\n            \"multiplier\": 2.50\r\n        },\r\n        {\r\n            \"type\": \"Weekly Overtime\",\r\n            \"overTimeStart\": 9.30,\r\n            \"multiplier\": 0.50\r\n        },\r\n        {\r\n            \"type\": \"Public holiday Overtime\",\r\n            \"multiplier\": 1.50\r\n        }\r\n    ],\r\n    \"location\": [\r\n        431,\r\n        333\r\n    ]\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/add",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "add"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "work-schedule-list",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://54.86.29.171:8080/work/schedule/list",
+                "protocol": "http",
+                "host": ["54", "86", "29", "171"],
+                "port": "8080",
+                "path": ["work", "schedule", "list"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "work-schedule-details-by-id",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/get/401",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "get", "401"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "update-work-schedule",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"workScheduleId\": 401,\r\n    \"days\": null,\r\n    \"payHours\": false,\r\n    \"assignees\": null,\r\n    \"breaks\": null,\r\n    \"deductions\": null,\r\n    \"rules\": [\r\n        {\r\n            \"id\": 409,\r\n            \"type\": \"Daily Overtime\",\r\n            \"overTimeStart\": 9.5,\r\n            \"time\": null,\r\n            \"multiplier\": 2.5\r\n        }\r\n    ]\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/update",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "update"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Time-tracking-get",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "tracking"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-device-time-tracking",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"deviceDetails\": {\r\n        \"isMobileApp\": true,\r\n        \"isKiosk\": true,\r\n        \"isWeb\": true\r\n    }\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/time/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "time", "tracking"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-tim-clock-restrictions",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"timeClock\": {\r\n        \"timeClockRestrictions\": {\r\n            \"restrictionType\": \"custom\"\r\n        },\r\n        \"customRestrictionsDetails\": {\r\n            \"isFacialRecognitionRequired\": true,\r\n            \"isSelfieRequiredWhenInOut\": true,\r\n            \"unUsualBehave\": \"Flagged\",\r\n            \"isLocationRequired\": true,\r\n            \"isEnableGeoFencing\": true,\r\n            \"isTimeEntriesRequiredClockIn\": true,\r\n            \"isProjectRequiredClockIn\": true,\r\n            \"isAllowMemberEditTimeEntries\": true\r\n        }\r\n    }\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/time/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "time", "tracking"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-device-lock",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"isDeviceLock\": true\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/time/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "time", "tracking"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-work-schedule-restrictions",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"workScheduleRestrictions\": {\r\n        \"earlyClockIn\": 5,\r\n        \"lateClockIn\": 5,\r\n        \"earlyClockOut\": 5\r\n    }\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/time/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "time", "tracking"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-reminders",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"reminders\": {\r\n        \"sendClockIn\": 5,\r\n        \"sendClockOut\": 5\r\n    }\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/time/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "time", "tracking"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "add-update-auto-clock-out",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"automaticClockOut\": {\r\n        \"isAllowMembersToSet\": true,\r\n        \"isAllMemberAutoClockOut\": true,\r\n        \"afterTimeType\": \"hour\",\r\n        \"atTime\": \"06:30:pm\"\r\n    }\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/work/schedule/time/tracking",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["work", "schedule", "time", "tracking"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Dashboard",
+        "item": [
+          {
+            "name": "Daily-Dashboard",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"personal\",\r\n    \"reportType\":\"d\"\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/attendance/dashboard",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["attendance", "dashboard"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Weekly-Dashboard",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"personal\",\r\n    \"reportType\":\"w\"\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/attendance/dashboard",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["attendance", "dashboard"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Monthly-Dashboard",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"personal\",\r\n    \"reportType\":\"m\"\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/attendance/dashboard",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["attendance", "dashboard"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Org-Daily-Dashboard",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"org\",\r\n    \"reportType\":\"d\"\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/attendance/dashboard",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["attendance", "dashboard"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Org-Weekly-Dashboard",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"org\",\r\n    \"reportType\":\"w\"\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/attendance/dashboard",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["attendance", "dashboard"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Org-Monthly-Dashboard",
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "{{token}}",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"type\":\"org\",\r\n    \"reportType\":\"m\"\r\n\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "http://localhost:8080/attendance/dashboard",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["attendance", "dashboard"]
+              }
+            },
+            "response": []
+          }
+        ]
+      }
+    ]
+  }
+  

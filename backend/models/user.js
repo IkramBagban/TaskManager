@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const port = process.env.PORT || 4000;
 let usersDBPath;
@@ -70,6 +71,39 @@ class Users {
             message: "User Created Successfully",
             data: this,
           });
+        }
+      });
+    });
+  }
+
+  static saveOTP(email, otp, res) {
+    getUsersFromDB((users) => {
+      const user = users.find((u) => u.email === email);
+      if (!user) {
+        res.status(404).json({ message: "User Not Found." });
+        return;
+      }
+
+      // Hash OTP with a unique salt
+      const salt = crypto.randomBytes(16).toString("hex");
+      const hash = crypto
+        .pbkdf2Sync(otp, salt, 1000, 64, `sha512`)
+        .toString(`hex`);
+
+      // Set OTP expiry time (e.g., 5 minutes)
+      const expiry = Date.now() + 300000;
+
+      // Save hash and expiry in user's record
+      user.otpHash = hash;
+      user.otpSalt = salt;
+      user.otpExpiry = expiry;
+
+      // Save the updated users array back to the file
+      fs.writeFile(usersDBPath, JSON.stringify(users), (err) => {
+        if (err) {
+          res.status(500).json({ message: "Error Saving OTP." });
+        } else {
+          res.status(200).json({ message: "OTP saved and email sent." });
         }
       });
     });

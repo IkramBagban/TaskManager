@@ -17,7 +17,7 @@ import TaskForm from "./pages/taskPages/TaskForm";
 import { TaskProvider } from "./store/TaskContext";
 import store from "./store/reduxtookit/store";
 import { Provider } from "react-redux";
-
+import ForgetPassword from "./pages/authentication/ForgetPassword";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
       { path: "home", element: <Home /> },
+      { path: "forget", element: <ForgetPassword /> },
       {
         path: "profile",
         element: <Profile />,
@@ -48,12 +49,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-      <Provider store={store}>
-    <ContextProvider>
-      <TaskProvider>
-        <RouterProvider router={router} />
-      </TaskProvider>
-    </ContextProvider>
-      </Provider>
+    <Provider store={store}>
+      <ContextProvider>
+        <TaskProvider>
+          <RouterProvider router={router} />
+        </TaskProvider>
+      </ContextProvider>
+    </Provider>
   </React.StrictMode>
 );

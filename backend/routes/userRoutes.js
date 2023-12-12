@@ -12,6 +12,8 @@ router.get("/user/:id", userController.getUser)
 
 router.put('/edit/:id', userController.updateUser)
 
+router.post('/request-otp', userController.requestOTP)
+
 
 
 module.exports = router;

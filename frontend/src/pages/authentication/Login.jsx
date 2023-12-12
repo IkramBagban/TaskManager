@@ -19,7 +19,7 @@ function Login() {
 
     if (!existingUser) {
       const error = new Error("User Not Exist");
-      alert(error)
+      alert(error);
       console.error(error);
       return;
     }
@@ -27,7 +27,7 @@ function Login() {
     if (existingUser.password !== input.password) {
       const error = new Error("Wrong Password!");
       console.error(error);
-      alert(error)
+      alert(error);
       return;
     }
 
@@ -72,6 +72,8 @@ function Login() {
       <Link to="/signup" style={{ textDecoration: "none" }}>
         Signup
       </Link>
+      <br />
+      <Link to="/forget">Forget Pasword</Link>
     </div>
   );
 }
